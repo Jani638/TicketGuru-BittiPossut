@@ -28,3 +28,28 @@ Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä,
 - Aluksi järjestelmä tehdään vain  lippujen myynti myyntipisteessä, ei verkkokauppaa. 
 - Lippujen on oltava tulostettavia.
 - Lippujen tarkastus toimii tietyssä järjestelmässä. 
+
+## Käyttäjäroolit
+- Asiakas
+- Myyjä
+- Tarkastaja
+- Ylläpitäjä
+
+## Käyttäjätarinat
+
+### 1
+> Asiakkaana haluan saada paperisen lipun, jossa on koodi, jotta voin todistaa ostaneeni lipun.
+
+### 2
+> Asiakkaana haluan ostaa lipun turvallisesti viralliselta myyntipisteeltä, jotta voin osallistua tapahtumaan.
+
+### 3
+> Myyjänä haluan kirjautua turvallisesti järjestelmään, jotta voin myydä ja palvella asiakkaita helposti.
+
+### 4
+> Myyjänä haluan nähdä paljonko lippuja on jäljellä, ja paljonko niitä on myyty. Helppo nähdä myös paljonko lippuja jää yli.
+
+### 6
+> Tarkastajana haluan skannata lipun koodin ovella, jotta voin merkitä lipun käytetyksi.
+
+
