@@ -10,7 +10,7 @@ Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea. Lipuissa on olta
 
 ## Käyttötapaukset
 Käyttötapauskaavio:
-<img width="696" height="572" alt="image" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
+<img width="200" height="150" alt="image" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
 
 ## Toiminnalliset vaatimukset
 
