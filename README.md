@@ -2,33 +2,46 @@
 
 ## Johdanto 
 
-Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myyntipisteessään. Järjestelmän tarkoituksena on mahdollistaa sujuva lipunmyynti myyntipisteessä. Lipuissa on koodi, joka luetaan ovella, jonka avulla lippu voidaan merkata käytetyksi. 
+Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myyntipisteessään. Järjestelmän tarkoituksena on mahdollistaa sujuva lipunmyynti myyntipisteessä. Lipuissa on koodi, joka luetaan ovella, jonka avulla lippu voidaan merkata käytetyksi. Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea.   Tulevaisuudessa järjestelmään olisi tarkoitus lisätä myös verkkokauppa. 
 
-Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea. Lipuissa on oltava helposti tarkastettava koodi, jonka avulla lippu voidaan varmistaa ovella.  Tulevaisuudessa järjestelmään olisi tarkoitus lisätä myös verkkokauppa. 
+### Sidosryhmät
+
+- Lipputoimisto (asiakas/tilaaja)
+- Lipunmyyjä (käyttäjä myyntipisteessä)
+- Asiakas (lipun ostaja)
+- Ylläpitäjä (järjestelmän hallinta )
 
 ## Järjestelmän määrittely
+
+
 
 ## Käyttötapaukset
 Käyttötapauskaavio:
 
 <img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
 
+## Käyttöliittymäkaavio:
+
+<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
+
 ## Toiminnalliset vaatimukset
+
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
 Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä, kellonaika ja paikka. 
 
 - Lipunmyyjä pystyy valitsemaan tietyn tapahtuman ja lipputyypin. 
 
-- Liput pystyy tulostaa ovella. Lipuissa oleva koodi varmistaa, että lippu on aito ja se merkitään käytetyksi. 
+- Liput pystyy tulostamaan ovella. 
+- Lipuissa oleva koodi varmistaa, että lippu on aito ja se merkitään käytetyksi. 
 
-## Ei-toiminnalliset vaatimukset
+### Ei-toiminnalliset vaatimukset
 
 - Järjestelmän pitää olla helposti laajennettava tulevaisuuden verkkokauppa järjestelmää varten. 
 - Selkeä ja helppokäyttöinen. 
 - Järjestelmä tallentaa ja säilyttää käyttäjien tiedot turvallisesti. 
 
-## Järjestelmän rajoitukset
+### Järjestelmän rajoitukset
 
 - Aluksi järjestelmä tehdään vain  lippujen myynti myyntipisteessä, ei verkkokauppaa. 
 - Lippujen on oltava tulostettavia.
@@ -56,7 +69,6 @@ Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä,
 ### 6 tarina (tarkastaja)
 > Tarkastajana haluan skannata lipun koodin ovella, jotta voin merkitä lipun käytetyksi.
 
-<<<<<<< HEAD
 # Tietokanta
 
 Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne ja taulujen väliset suhteet. Tietokanta tallentaa tiedot tapahtumista, lipuista, käyttäjistä ja myynnistä, jotta myyntipisteen toiminta ja lipun tarkastus voidaan hoitaa sujuvasti.
@@ -65,7 +77,7 @@ Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne
 Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella. Se sisältää tiedot käyttäjistä (asiakkaat, myyjät, tarkastajat), tapahtumista, lipputyypeistä ja lippujen ostotapahtumista. Tulevaisuudessa tietokantaa voidaan laajentaa verkkokauppaa varten.
 
 ## 2. Tietokantakaavio
-TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
+![Tietokantakaavio](Tietokantakaavio.png)
 
 ## 3. Taulujen kuvaus
 
@@ -84,7 +96,7 @@ TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
 |-----------|------------|------------|--------|
 | id        | Long       | PK         | Tapahtuman tunniste |
 | name      | String     | NOT NULL   | Nimi |
-| date_time | Timestamp  | NOT NULL   | Päivämäärä ja kellonaika |
+| date_time | LocalDateTime  | NOT NULL   | Päivämäärä ja kellonaika |
 | location  | String     | NOT NULL   | Paikka |
 | capacity  | Int        | NULL       | Kokonaiskapasiteetti |
 
@@ -96,7 +108,7 @@ TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
 | id        | Long     | PK              | Lipputyypin tunniste |
 | event_id  | Long     | FK -> Event(id) | Viittaus tapahtumaan |
 | name      | String   | NOT NULL        | Lipputyypin nimi |
-| price     | Decimal  | NOT NULL        | Hinta |
+| price     | Double  | NOT NULL        | Hinta |
 | quantity  | Int      | NOT NULL        | Määrä |
 
 ---
@@ -119,7 +131,7 @@ TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
 | ticket_id  | Long       | FK -> Ticket(id)  | Myyty lippu |
 | customer_id| Long       | FK -> User(id)    | Asiakas |
 | seller_id  | Long       | FK -> User(id)    | Myyjä |
-| sale_date  | Timestamp  | NOT NULL          | Myyntipäivä |
+| sale_date  | LocalDateTime  | NOT NULL          | Myyntipäivä |
 
 ---
 
@@ -138,9 +150,5 @@ TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
 - **Entity-luokat:** `User`, `Event`, `TicketType`, `Ticket`, `Sale` vastaavat tietokannan tauluja.  
 - **Repository-luokat:** Spring Data JPA -repositoryt kuten `UserRepository`, `EventRepository`, `TicketRepository` ja `SaleRepository` mahdollistavat tietokannan CRUD-toiminnot.  
 - Sovellus logiikka käyttää entityjä ja repositoryjä lippujen hallintaan, myyntiin ja tarkastukseen.
-=======
-## Käyttöliittymäkaavio:
 
-<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
->>>>>>> 14180882b976769d8a7a6a20e466be954142fe0c
 
