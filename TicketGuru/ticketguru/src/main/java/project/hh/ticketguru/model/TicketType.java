@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class TicketType {
@@ -13,9 +16,16 @@ public class TicketType {
 
     private Long id;
     private Long eventId;
+
+    @ManyToOne
+    private Event event;
+
     private String name;
     private Double price;
     private Integer quantity;
+
+    @OneToMany(mappedBy = "ticketType")
+    private List<Ticket> tickets;
 
     public TicketType() {
     }
