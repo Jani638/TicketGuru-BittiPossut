@@ -8,6 +8,11 @@ Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea. Lipuissa on olta
 
 ## Järjestelmän määrittely
 
+## Käyttötapaukset
+Käyttötapauskaavio:
+
+<img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
+
 ## Toiminnalliset vaatimukset
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
@@ -59,7 +64,7 @@ Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne
 Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella. Se sisältää tiedot käyttäjistä (asiakkaat, myyjät, tarkastajat), tapahtumista, lipputyypeistä ja lippujen ostotapahtumista. Tulevaisuudessa tietokantaa voidaan laajentaa verkkokauppaa varten.
 
 ## 2. Tietokantakaavio
-TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
+![Tietokantakaavio](Tietokantakaavio.png)
 
 ## 3. Taulujen kuvaus
 
@@ -132,4 +137,7 @@ TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
 - **Entity-luokat:** `User`, `Event`, `TicketType`, `Ticket`, `Sale` vastaavat tietokannan tauluja.  
 - **Repository-luokat:** Spring Data JPA -repositoryt kuten `UserRepository`, `EventRepository`, `TicketRepository` ja `SaleRepository` mahdollistavat tietokannan CRUD-toiminnot.  
 - Sovellus logiikka käyttää entityjä ja repositoryjä lippujen hallintaan, myyntiin ja tarkastukseen.
+## Käyttöliittymäkaavio:
+
+<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
 
