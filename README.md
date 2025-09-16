@@ -8,11 +8,6 @@ Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea. Lipuissa on olta
 
 ## Järjestelmän määrittely
 
-## Käyttötapaukset
-Käyttötapauskaavio:
-
-<img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
-
 ## Toiminnalliset vaatimukset
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
@@ -56,7 +51,85 @@ Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä,
 ### 6 tarina (tarkastaja)
 > Tarkastajana haluan skannata lipun koodin ovella, jotta voin merkitä lipun käytetyksi.
 
-## Käyttöliittymäkaavio:
+# Tietokanta
 
-<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
+Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne ja taulujen väliset suhteet. Tietokanta tallentaa tiedot tapahtumista, lipuista, käyttäjistä ja myynnistä, jotta myyntipisteen toiminta ja lipun tarkastus voidaan hoitaa sujuvasti.
+
+## 1. Yleiskuva tietokannasta
+Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella. Se sisältää tiedot käyttäjistä (asiakkaat, myyjät, tarkastajat), tapahtumista, lipputyypeistä ja lippujen ostotapahtumista. Tulevaisuudessa tietokantaa voidaan laajentaa verkkokauppaa varten.
+
+## 2. Tietokantakaavio
+TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
+
+## 3. Taulujen kuvaus
+
+### 3.1 User
+| Kenttä    | Tyyppi | Rajoitteet         | Kuvaus |
+|-----------|--------|--------------------|--------|
+| id        | Long   | PK                 | Käyttäjän tunniste |
+| username  | String | UNIQUE, NOT NULL   | Kirjautumistunnus |
+| password  | String | NOT NULL           | Hashattu salasana |
+| role      | Enum   | NOT NULL           | Rooli (asiakas, myyjä, tarkastaja) |
+
+---
+
+### 3.2 Event
+| Kenttä    | Tyyppi     | Rajoitteet | Kuvaus |
+|-----------|------------|------------|--------|
+| id        | Long       | PK         | Tapahtuman tunniste |
+| name      | String     | NOT NULL   | Nimi |
+| date_time | Timestamp  | NOT NULL   | Päivämäärä ja kellonaika |
+| location  | String     | NOT NULL   | Paikka |
+| capacity  | Int        | NULL       | Kokonaiskapasiteetti |
+
+---
+
+### 3.3 TicketType
+| Kenttä    | Tyyppi   | Rajoitteet      | Kuvaus |
+|-----------|----------|-----------------|--------|
+| id        | Long     | PK              | Lipputyypin tunniste |
+| event_id  | Long     | FK -> Event(id) | Viittaus tapahtumaan |
+| name      | String   | NOT NULL        | Lipputyypin nimi |
+| price     | Decimal  | NOT NULL        | Hinta |
+| quantity  | Int      | NOT NULL        | Määrä |
+
+---
+
+### 3.4 Ticket
+| Kenttä         | Tyyppi   | Rajoitteet             | Kuvaus |
+|----------------|----------|------------------------|--------|
+| id             | Long     | PK                     | Lipun tunniste |
+| ticket_type_id | Long     | FK -> TicketType(id)   | Viittaus lipputyyppiin |
+| code           | String   | UNIQUE, NOT NULL       | Lipun koodi |
+| sold           | Bool     | NOT NULL               | Myyty (true/false) |
+| used           | Bool     | NOT NULL               | Käytetty (true/false) |
+
+---
+
+### 3.5 Sale
+| Kenttä     | Tyyppi     | Rajoitteet        | Kuvaus |
+|------------|------------|-------------------|--------|
+| id         | Long       | PK                | Myynnin tunniste |
+| ticket_id  | Long       | FK -> Ticket(id)  | Myyty lippu |
+| customer_id| Long       | FK -> User(id)    | Asiakas |
+| seller_id  | Long       | FK -> User(id)    | Myyjä |
+| sale_date  | Timestamp  | NOT NULL          | Myyntipäivä |
+
+---
+
+## 4. Suhteet
+- **User – Sale**: Asiakkaat ja myyjät liittyvät myyntitapahtumiin (1:N).  
+- **Event – TicketType – Ticket**: Tapahtumalla on lipputyyppejä, lipputyypeillä yksittäiset liput (1:N:N).  
+- **Ticket – Sale**: Lippu kuuluu yhteen myyntitapahtumaan (1:1).  
+
+
+## 5. Erityispiirteet
+- Lipun koodi on uniikki ja mahdollistaa tarkastuksen ovella.  
+- Liput voidaan merkitä käytetyiksi (used = true) lipun tarkastuksen yhteydessä.  
+- Mahdolliset indeksit vierasavaimille ja myyntipäivälle nopeuttavat kyselyjä.
+
+## 6. Käyttö Spring Boot -projektissa
+- **Entity-luokat:** `User`, `Event`, `TicketType`, `Ticket`, `Sale` vastaavat tietokannan tauluja.  
+- **Repository-luokat:** Spring Data JPA -repositoryt kuten `UserRepository`, `EventRepository`, `TicketRepository` ja `SaleRepository` mahdollistavat tietokannan CRUD-toiminnot.  
+- Sovellus logiikka käyttää entityjä ja repositoryjä lippujen hallintaan, myyntiin ja tarkastukseen.
 
