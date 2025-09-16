@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class User {
@@ -14,12 +16,14 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private Enum role;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Enum role) {
+    public User(Long id, String username, String password, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -50,11 +54,16 @@ public class User {
         this.password = password;
     }
 
-    public Enum getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Enum role) {
+    public void setRole(Role role) {
         this.role = role;
     }
+
+    public enum Role {
+    USER,
+    ADMIN
+}
 }

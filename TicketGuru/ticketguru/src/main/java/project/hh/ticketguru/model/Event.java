@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Event {
@@ -17,6 +19,9 @@ public class Event {
     private LocalDateTime dateTime;
     private String location;
     private Integer capacity;
+
+    @OneToMany(mappedBy = "event")
+    private List<TicketType> ticketTypes;
     
     public Event() {
 
