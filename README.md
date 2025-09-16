@@ -64,7 +64,7 @@ Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne
 Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella. Se sisältää tiedot käyttäjistä (asiakkaat, myyjät, tarkastajat), tapahtumista, lipputyypeistä ja lippujen ostotapahtumista. Tulevaisuudessa tietokantaa voidaan laajentaa verkkokauppaa varten.
 
 ## 2. Tietokantakaavio
-TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
+![Tietokantakaavio](Tietokantakaavio.png)
 
 ## 3. Taulujen kuvaus
 
