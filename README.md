@@ -83,7 +83,7 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 |-----------|------------|------------|--------|
 | id        | Long       | PK         | Tapahtuman tunniste |
 | name      | String     | NOT NULL   | Nimi |
-| date_time | Timestamp  | NOT NULL   | Päivämäärä ja kellonaika |
+| date_time | LocalDateTime  | NOT NULL   | Päivämäärä ja kellonaika |
 | location  | String     | NOT NULL   | Paikka |
 | capacity  | Int        | NULL       | Kokonaiskapasiteetti |
 
@@ -95,7 +95,7 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 | id        | Long     | PK              | Lipputyypin tunniste |
 | event_id  | Long     | FK -> Event(id) | Viittaus tapahtumaan |
 | name      | String   | NOT NULL        | Lipputyypin nimi |
-| price     | Decimal  | NOT NULL        | Hinta |
+| price     | Double  | NOT NULL        | Hinta |
 | quantity  | Int      | NOT NULL        | Määrä |
 
 ---
@@ -118,7 +118,7 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 | ticket_id  | Long       | FK -> Ticket(id)  | Myyty lippu |
 | customer_id| Long       | FK -> User(id)    | Asiakas |
 | seller_id  | Long       | FK -> User(id)    | Myyjä |
-| sale_date  | Timestamp  | NOT NULL          | Myyntipäivä |
+| sale_date  | LocalDateTime  | NOT NULL          | Myyntipäivä |
 
 ---
 
