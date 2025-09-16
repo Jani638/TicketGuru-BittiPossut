@@ -1,7 +1,6 @@
 package project.hh.ticketguru.model;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +17,7 @@ public class Event {
     private LocalDateTime dateTime;
     private String location;
     private Integer capacity;
-
+    
     public Event() {
 
     }
