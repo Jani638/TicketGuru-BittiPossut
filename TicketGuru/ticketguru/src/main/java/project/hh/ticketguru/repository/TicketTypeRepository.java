@@ -1,5 +1,8 @@
 package project.hh.ticketguru.repository;
 
-public interface TicketTypeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import project.hh.ticketguru.model.TicketType;
+
+public interface TicketTypeRepository extends JpaRepository<TicketType, Long> {
 
 }
