@@ -8,11 +8,6 @@ Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea. Lipuissa on olta
 
 ## Järjestelmän määrittely
 
-## Käyttötapaukset
-Käyttötapauskaavio:
-
-<img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
-
 ## Toiminnalliset vaatimukset
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
@@ -57,6 +52,9 @@ Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä,
 > Tarkastajana haluan skannata lipun koodin ovella, jotta voin merkitä lipun käytetyksi.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b93e829aec2f32f6d58a83271906fb54bc9b09f3
 # Tietokanta
 
 Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne ja taulujen väliset suhteet. Tietokanta tallentaa tiedot tapahtumista, lipuista, käyttäjistä ja myynnistä, jotta myyntipisteen toiminta ja lipun tarkastus voidaan hoitaa sujuvasti.
@@ -65,7 +63,8 @@ Tässä luvussa kuvataan järjestelmässä käytettävä tietokanta, sen rakenne
 Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella. Se sisältää tiedot käyttäjistä (asiakkaat, myyjät, tarkastajat), tapahtumista, lipputyypeistä ja lippujen ostotapahtumista. Tulevaisuudessa tietokantaa voidaan laajentaa verkkokauppaa varten.
 
 ## 2. Tietokantakaavio
-TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
+![Näyttökuva](Tietokantakaavio.png)
+
 
 ## 3. Taulujen kuvaus
 
@@ -138,9 +137,12 @@ TÄHÄN LISÄTÄÄN KUVA TIETOKANTAKAAVIOSTA!! :-)
 - **Entity-luokat:** `User`, `Event`, `TicketType`, `Ticket`, `Sale` vastaavat tietokannan tauluja.  
 - **Repository-luokat:** Spring Data JPA -repositoryt kuten `UserRepository`, `EventRepository`, `TicketRepository` ja `SaleRepository` mahdollistavat tietokannan CRUD-toiminnot.  
 - Sovellus logiikka käyttää entityjä ja repositoryjä lippujen hallintaan, myyntiin ja tarkastukseen.
+<<<<<<< HEAD
 =======
 ## Käyttöliittymäkaavio:
 
 <img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
 >>>>>>> 14180882b976769d8a7a6a20e466be954142fe0c
+=======
+>>>>>>> b93e829aec2f32f6d58a83271906fb54bc9b09f3
 
