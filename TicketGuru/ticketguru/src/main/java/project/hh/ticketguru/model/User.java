@@ -6,7 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
-@Entity(name="app_user")
+@Entity(name="app_user") //Entityn nimi nyt "app_user", koska User nimi on joku varattu avainsana sqlssä nii se tietokanta menee tyhmäksi muuten jos laittais vaan "User"//
+
 public class User {
 
     @Id

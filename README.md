@@ -74,7 +74,7 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 | id        | Long   | PK                 | Käyttäjän tunniste |
 | username  | String | UNIQUE, NOT NULL   | Kirjautumistunnus |
 | password  | String | NOT NULL           | Hashattu salasana |
-| role      | Enum   | NOT NULL           | Rooli (asiakas, myyjä, tarkastaja) |
+| role      | String   | NOT NULL           | Rooli (asiakas, myyjä, tarkastaja) |
 
 ---
 
