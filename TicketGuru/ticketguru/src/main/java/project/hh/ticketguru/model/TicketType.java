@@ -10,13 +10,25 @@ import jakarta.persistence.Id;
 public class TicketType {
 
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     
     private Long eventId;
+
+    @ManyToOne
+    private Event event;
+
     private String name;
     private Double price;
     private Integer quantity;
+
+    @OneToMany(mappedBy = "ticketType")
+    private List<Ticket> tickets;
+
+    public TicketType() {
+    }
 
 
     public TicketType(){}
@@ -32,30 +44,39 @@ public class TicketType {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getEventId() {
         return eventId;
     }
+
     public void setEventId(Long eventId) {
         this.eventId = eventId;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Double getPrice() {
         return price;
     }
+
     public void setPrice(Double price) {
         this.price = price;
     }
+
     public Integer getQuantity() {
         return quantity;
     }
+
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }

@@ -10,12 +10,21 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     
     private Long ticketTypeId;
+
+    @ManyToOne
+    private TicketType ticketType;
+    
     private String code;
     private Boolean sold;
     private Boolean used;
+
+    public Ticket() {
+
+    }
 
 
     public Ticket(){}
@@ -31,30 +40,39 @@ public class Ticket {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getTicketTypeId() {
         return ticketTypeId;
     }
+
     public void setTicketTypeId(Long ticketTypeId) {
         this.ticketTypeId = ticketTypeId;
     }
+
     public String getCode() {
         return code;
     }
+
     public void setCode(String code) {
         this.code = code;
     }
+
     public Boolean getSold() {
         return sold;
     }
+
     public void setSold(Boolean sold) {
         this.sold = sold;
     }
+
     public Boolean getUsed() {
         return used;
     }
+
     public void setUsed(Boolean used) {
         this.used = used;
     }
