@@ -1,8 +1,18 @@
 package project.hh.ticketguru.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
+@Entity
 public class TicketType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Long eventId;
     private String name;
     private Double price;
@@ -10,7 +20,7 @@ public class TicketType {
 
 
     public TicketType(){}
-    
+
     public TicketType(Long id, Long eventId, String name, Double price, Integer quantity) {
         this.id = id;
         this.eventId = eventId;

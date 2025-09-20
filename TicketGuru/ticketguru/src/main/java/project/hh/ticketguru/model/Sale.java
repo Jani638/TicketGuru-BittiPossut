@@ -1,18 +1,25 @@
 package project.hh.ticketguru.model;
 
 import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-
+@Entity
 public class Sale {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Long ticketId;
     private Long customerId;
     private Long sellerId;
     private LocalDateTime saleDate;
 
     public Sale(){}
-    
+
     public Sale(Long id, Long ticketId, Long customerId, Long sellerId, LocalDateTime saleDate) {
         this.id = id;
         this.ticketId = ticketId;

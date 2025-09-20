@@ -1,8 +1,17 @@
 package project.hh.ticketguru.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Ticket {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Long ticketTypeId;
     private String code;
     private Boolean sold;
@@ -10,7 +19,7 @@ public class Ticket {
 
 
     public Ticket(){}
-    
+
     public Ticket(Long id, Long ticketTypeId, String code, Boolean sold, Boolean used) {
         this.id = id;
         this.ticketTypeId = ticketTypeId;
