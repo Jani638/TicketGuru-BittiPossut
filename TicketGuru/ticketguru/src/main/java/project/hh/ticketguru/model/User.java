@@ -5,21 +5,23 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+
+@Entity(name="app_user") //Entityn nimi nyt "app_user", koska User nimi on joku varattu avainsana sqlssä nii se tietokanta menee tyhmäksi muuten jos laittais vaan "User"//
+
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String username;
     private String password;
-    private Enum role;
+    private String role;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Enum role) {
+    public User(Long id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -49,12 +51,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Enum getRole() {
+    public String getRole() {
         return role;
     }
-
-    public void setRole(Enum role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }

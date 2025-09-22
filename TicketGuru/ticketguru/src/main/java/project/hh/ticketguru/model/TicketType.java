@@ -5,13 +5,22 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
 @Entity
 public class TicketType {
 
     @Id
+<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.AUTO)
 
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
     private Long id;
+    
     private Long eventId;
     private String name;
     private Double price;
@@ -20,6 +29,11 @@ public class TicketType {
     public TicketType() {
     }
 
+<<<<<<< HEAD
+=======
+    public TicketType(){}
+
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
     public TicketType(Long id, Long eventId, String name, Double price, Integer quantity) {
         this.id = id;
         this.eventId = eventId;

@@ -10,16 +10,25 @@ import jakarta.persistence.Id;
 public class Sale {
 
     @Id
+<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.AUTO)
 
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
     private Long id;
+    
     private Long ticketId;
     private Long customerId;
     private Long sellerId;
     private LocalDateTime saleDate;
 
+<<<<<<< HEAD
     public Sale() {
     }
+=======
+    public Sale(){}
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
 
     public Sale(Long id, Long ticketId, Long customerId, Long sellerId, LocalDateTime saleDate) {
         this.id = id;

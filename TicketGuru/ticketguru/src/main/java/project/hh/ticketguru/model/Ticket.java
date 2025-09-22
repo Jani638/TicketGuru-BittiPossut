@@ -9,9 +9,14 @@ import jakarta.persistence.Id;
 public class Ticket {
 
     @Id
+<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.AUTO)
 
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
     private Long id;
+    
     private Long ticketTypeId;
     private String code;
     private Boolean sold;
@@ -21,6 +26,11 @@ public class Ticket {
 
     }
 
+<<<<<<< HEAD
+=======
+    public Ticket(){}
+
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
     public Ticket(Long id, Long ticketTypeId, String code, Boolean sold, Boolean used) {
         this.id = id;
         this.ticketTypeId = ticketTypeId;

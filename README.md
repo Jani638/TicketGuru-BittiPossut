@@ -13,16 +13,12 @@ Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myy
 
 ## Järjestelmän määrittely
 
-<<<<<<< HEAD
-### Toiminnalliset vaatimukset
-=======
 ## Käyttötapaukset
 Käyttötapauskaavio:
 
 <img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
 
 ## Toiminnalliset vaatimukset
->>>>>>> 7b4876e31ad71d57ddba1576f6c93f9766ca0330
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
 Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä, kellonaika ja paikka. 
@@ -84,7 +80,7 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 | id        | Long   | PK                 | Käyttäjän tunniste |
 | username  | String | UNIQUE, NOT NULL   | Kirjautumistunnus |
 | password  | String | NOT NULL           | Hashattu salasana |
-| role      | Enum   | NOT NULL           | Rooli (asiakas, myyjä, tarkastaja) |
+| role      | String   | NOT NULL           | Rooli (asiakas, myyjä, tarkastaja) |
 
 ---
 
@@ -151,3 +147,8 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 
 <img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
 
+# API - Dokumentaatio
+
+# Base URL: 
+
+- http://www.localhost/api 
