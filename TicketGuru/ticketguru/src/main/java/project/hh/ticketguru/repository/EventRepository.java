@@ -1,8 +1,11 @@
 package project.hh.ticketguru.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.yaml.snakeyaml.events.Event;
+import org.springframework.stereotype.Repository;
 
-public interface EventRepository extends JpaRepository<Event,Long>{
+import project.hh.ticketguru.model.Event;
+
+@Repository
+public interface EventRepository extends JpaRepository<Event, Long> {
 
 }

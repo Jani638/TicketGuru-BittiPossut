@@ -12,9 +12,9 @@ import java.util.List;
 public class TicketType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Long eventId;
 
     @ManyToOne

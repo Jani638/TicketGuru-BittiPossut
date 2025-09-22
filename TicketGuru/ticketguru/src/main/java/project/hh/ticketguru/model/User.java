@@ -4,26 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
-@Entity
+
+@Entity(name="app_user") //Entityn nimi nyt "app_user", koska User nimi on joku varattu avainsana sqlssä nii se tietokanta menee tyhmäksi muuten jos laittais vaan "User"//
+
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String username;
     private String password;
+    private String role;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    public User(){}
 
-    public User() {
-    }
-
-    public User(Long id, String username, String password, Role role) {
+    public User(Long id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -53,12 +50,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
-
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
