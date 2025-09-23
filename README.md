@@ -180,4 +180,16 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 - /api/users
 - /api/users/
 
+## Metodit, polku, polkuparametrit, query-parametrit esimerkkejä
+
+| Metodi | Polku | Polkuparametrit | Query-parametrit |
+|--------|-------|----------------|-----------------|
+| GET    | /api/events | – | ?date=2025-09-23&location=helsinki&page=2&limit=10 |
+| GET    | /api/events/{id} | {id}=123 | – |
+| GET    | /api/events/{id} | {id}=999 | – |
+| POST   | /api/events | – | – |
+| PUT    | /api/events/{id} | {id}=123 | ?notifyUsers=true |
+| DELETE | /api/events/{id} | {id}=123 | – |
+
+
 
