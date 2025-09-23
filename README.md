@@ -191,9 +191,25 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 | PUT    | /api/events/{id} | {id}=123 | ?notifyUsers=true |
 | DELETE | /api/events/{id} | {id}=123 | – |
 
+### Lyhyet kuvaukset endpointien toiminnasta
 
+# GET /api/events
+Hakee kaikki tapahtumat. Palauttaa listan kaikista järjestelmän tapahtumista. Hakua voi rajata query-parametreilla, kuten päivämäärä, sijainti, sivutus jne.
+
+# GET /api/events/{id}
+Hakee yksittäisen tapahtuman tunnisteen perusteella. Palauttaa tapahtuman tiedot, jos id löytyy, muuten 404 Not Found.
+
+# POST /api/events
+Luo uuden tapahtuman. Lähetä tapahtuman tiedot pyynnön bodynä (JSON). Palauttaa luodun tapahtuman ja statuskoodin 201 Created.
+
+# PUT /api/events/{id}
+Päivittää olemassa olevan tapahtuman annetulla id:llä. Lähetä uudet tiedot pyynnön bodynä. Palauttaa päivitetyn tapahtuman tai 404 Not Found, jos id:tä ei löydy.
+
+# DELETE /api/events/{id}
+Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos poisto onnistuu, tai 404 Not Found, jos tapahtumaa ei löydy.
 
 ### Esimerkkituloste:
+
 ```java
 {
   "id": 123,
