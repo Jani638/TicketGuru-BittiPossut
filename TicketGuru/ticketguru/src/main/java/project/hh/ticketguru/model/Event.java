@@ -1,13 +1,10 @@
 package project.hh.ticketguru.model;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Event {
@@ -21,11 +18,7 @@ public class Event {
     private String location;
     private Integer capacity;
 
-    @OneToMany(mappedBy = "event")
-    private List<TicketType> ticketTypes;
-
     public Event() {
-
     }
 
     public Event(Long id, String name, LocalDateTime dateTime, String location, Integer capacity) {
