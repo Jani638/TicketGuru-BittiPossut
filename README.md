@@ -148,12 +148,6 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 - **Repository-luokat:** Spring Data JPA -repositoryt kuten `UserRepository`, `EventRepository`, `TicketRepository` ja `SaleRepository` mahdollistavat tietokannan CRUD-toiminnot.  
 - Sovellus logiikka käyttää entityjä ja repositoryjä lippujen hallintaan, myyntiin ja tarkastukseen.
 
-# API - dokumentaatio
-
-### Base URL:  
- 
-- http://localhost:8080/api
-
 # API - Dokumentaatio
 
 ## Base URL: 
