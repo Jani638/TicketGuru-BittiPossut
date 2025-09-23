@@ -181,3 +181,13 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 -/api/users/
 
 
+### Esimerkkituloste:
+```java
+{
+  "id": 123,
+  "name": "OpenAI Hackathon",
+  "date": "2025-11-01",
+  "location": "Tampere",
+  "capacity": 200
+}
+```
