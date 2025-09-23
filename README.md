@@ -180,4 +180,42 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 - /api/users
 - /api/users/
 
+## Metodit, polku, polkuparametrit, query-parametrit esimerkkejä
 
+| Metodi | Polku | Polkuparametrit | Query-parametrit |
+|--------|-------|----------------|-----------------|
+| GET    | /api/events | – | ?date=2025-09-23&location=helsinki&page=2&limit=10 |
+| GET    | /api/events/{id} | {id}=123 | – |
+| GET    | /api/events/{id} | {id}=999 | – |
+| POST   | /api/events | – | – |
+| PUT    | /api/events/{id} | {id}=123 | ?notifyUsers=true |
+| DELETE | /api/events/{id} | {id}=123 | – |
+
+### Lyhyet kuvaukset endpointien toiminnasta
+
+#### GET /api/events
+Hakee kaikki tapahtumat. Palauttaa listan kaikista järjestelmän tapahtumista. Hakua voi rajata query-parametreilla, kuten päivämäärä, sijainti, sivutus jne.
+
+#### GET /api/events/{id}
+Hakee yksittäisen tapahtuman tunnisteen perusteella. Palauttaa tapahtuman tiedot, jos id löytyy, muuten 404 Not Found.
+
+#### POST /api/events
+Luo uuden tapahtuman. Lähetä tapahtuman tiedot pyynnön bodynä (JSON). Palauttaa luodun tapahtuman ja statuskoodin 201 Created.
+
+#### PUT /api/events/{id}
+Päivittää olemassa olevan tapahtuman annetulla id:llä. Lähetä uudet tiedot pyynnön bodynä. Palauttaa päivitetyn tapahtuman tai 404 Not Found, jos id:tä ei löydy.
+
+#### DELETE /api/events/{id}
+Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos poisto onnistuu, tai 404 Not Found, jos tapahtumaa ei löydy.
+
+### Esimerkkituloste:
+
+```java
+{
+  "id": 123,
+  "name": "OpenAI Hackathon",
+  "date": "2025-11-01",
+  "location": "Tampere",
+  "capacity": 200
+}
+```
