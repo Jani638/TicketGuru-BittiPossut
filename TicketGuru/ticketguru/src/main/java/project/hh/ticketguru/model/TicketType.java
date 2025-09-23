@@ -8,10 +8,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
 @Entity
 public class TicketType {
 
