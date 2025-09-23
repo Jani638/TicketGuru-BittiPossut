@@ -5,46 +5,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Sale {
 
     @Id
-<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-=======
-<<<<<<< HEAD
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-=======
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
->>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
->>>>>>> fe0f99622c41a0b05de4b09d9ebd5aa96a030903
     private Long id;
     
     private Long ticketId;
     private Long customerId;
     private Long sellerId;
-
-    @OneToOne
-    private Ticket ticket;
-
-    @ManyToOne
-    private User customer;
-
-    @ManyToOne
-    private User seller;
-
     private LocalDateTime saleDate;
 
-<<<<<<< HEAD
-    public Sale() {
-    }
-=======
     public Sale(){}
->>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
 
     public Sale(Long id, Long ticketId, Long customerId, Long sellerId, LocalDateTime saleDate) {
         this.id = id;
@@ -53,43 +27,33 @@ public class Sale {
         this.sellerId = sellerId;
         this.saleDate = saleDate;
     }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public Long getTicketId() {
         return ticketId;
     }
-
     public void setTicketId(Long ticketId) {
         this.ticketId = ticketId;
     }
-
     public Long getCustomerId() {
         return customerId;
     }
-
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
-
     public Long getSellerId() {
         return sellerId;
     }
-
     public void setSellerId(Long sellerId) {
         this.sellerId = sellerId;
     }
-
     public LocalDateTime getSaleDate() {
         return saleDate;
     }
-
     public void setSaleDate(LocalDateTime saleDate) {
         this.saleDate = saleDate;
     }

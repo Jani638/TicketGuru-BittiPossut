@@ -1,12 +1,13 @@
 package project.hh.ticketguru.model;
 import java.time.LocalDateTime;
-import java.util.List;
-
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
+
+
+@Entity
 public class Event {
 
     @Id
@@ -18,12 +19,8 @@ public class Event {
     private String location;
     private Integer capacity;
 
-    @OneToMany(mappedBy = "event")
-    private List<TicketType> ticketTypes;
-    
-    public Event() {
 
-    }
+    public Event(){}
 
     public Event(Long id, String name, LocalDateTime dateTime, String location, Integer capacity) {
         this.id = id;
@@ -36,39 +33,30 @@ public class Event {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public LocalDateTime getDateTime() {
         return dateTime;
     }
-
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
-
     public String getLocation() {
         return location;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
-
     public Integer getCapacity() {
         return capacity;
     }
-
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
