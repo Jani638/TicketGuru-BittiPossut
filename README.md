@@ -181,5 +181,9 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 - /api/tickets/types
 - /api/tickets/types/{id}
 
+### User
+
+-/api/users
+-/api/users/
 
 
