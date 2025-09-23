@@ -10,7 +10,16 @@ import jakarta.persistence.ManyToOne;
 public class Ticket {
 
     @Id
+<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+=======
+<<<<<<< HEAD
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
+>>>>>>> fe0f99622c41a0b05de4b09d9ebd5aa96a030903
     private Long id;
     
     private Long ticketTypeId;
@@ -26,6 +35,11 @@ public class Ticket {
 
     }
 
+<<<<<<< HEAD
+=======
+    public Ticket(){}
+
+>>>>>>> ba3df76276a725581f3b80ea90182795a1d8f1b7
     public Ticket(Long id, Long ticketTypeId, String code, Boolean sold, Boolean used) {
         this.id = id;
         this.ticketTypeId = ticketTypeId;

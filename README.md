@@ -13,8 +13,6 @@ Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myy
 
 ## Järjestelmän määrittely
 
-
-
 ## Käyttötapaukset
 Käyttötapauskaavio:
 
@@ -25,7 +23,6 @@ Käyttötapauskaavio:
 <img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
 
 ## Toiminnalliset vaatimukset
-
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
 Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä, kellonaika ja paikka. 
@@ -156,4 +153,33 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 ### Base URL:  
  
 - http://localhost:8080/api
+
+# API - Dokumentaatio
+
+## Base URL: 
+
+- http://localhost:8080/api 
+
+## Endpointit
+
+### Event: 
+
+- /api/events
+- /api/events/{id}
+
+### Sale
+- /api/sales
+- /api/sales/{id}
+
+### Ticket 
+
+- /api/tickets
+- /api/tickets/{id}
+
+### TicketType 
+
+- /api/tickets/types
+- /api/tickets/types/{id}
+
+
 
