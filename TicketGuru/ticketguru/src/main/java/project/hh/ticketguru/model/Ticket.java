@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Ticket {
@@ -12,21 +11,14 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private Long ticketTypeId;
 
-    @ManyToOne
-    private TicketType ticketType;
-    
+    private Long ticketTypeId;
     private String code;
     private Boolean sold;
     private Boolean used;
 
     public Ticket() {
-
     }
-
-    public Ticket(){}
 
     public Ticket(Long id, Long ticketTypeId, String code, Boolean sold, Boolean used) {
         this.id = id;
