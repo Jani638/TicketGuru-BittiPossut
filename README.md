@@ -183,7 +183,7 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 
 ### User
 
--/api/users
--/api/users/
+- /api/users
+- /api/users/
 
 
