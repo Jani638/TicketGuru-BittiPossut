@@ -1,5 +1,6 @@
 package project.hh.ticketguru.controller;
 
+import project.hh.ticketguru.dto.SaleCreateDto;
 import project.hh.ticketguru.model.Sale;
 import project.hh.ticketguru.repository.SaleRepository;
 
@@ -38,7 +39,12 @@ public class SaleController {
     }
 
     @PostMapping
-    public Sale createSale(@RequestBody Sale sale) {
+    public Sale createSale(@RequestBody SaleCreateDto dto) {
+        Sale sale = new Sale();
+        sale.setTicketId(dto.getTicketId());
+        sale.setCustomerId(dto.getCustomerId());
+        sale.setSellerId(dto.getSellerId());
+        sale.setSaleDate(dto.getSaleDate());
         return saleRepository.save(sale);
     }
     
