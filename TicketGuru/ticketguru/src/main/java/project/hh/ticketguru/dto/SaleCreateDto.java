@@ -1,41 +1,12 @@
-package project.hh.ticketguru.model;
+package project.hh.ticketguru.dto;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
-public class Sale {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class SaleCreateDto {
     private Long ticketId;
     private Long customerId;
     private Long sellerId;
     private LocalDateTime saleDate;
-
-    
-    public Sale() {
-    }
-
-    public Sale(Long id, Long ticketId, Long customerId, Long sellerId, LocalDateTime saleDate) {
-        this.id = id;
-        this.ticketId = ticketId;
-        this.customerId = customerId;
-        this.sellerId = sellerId;
-        this.saleDate = saleDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getTicketId() {
         return ticketId;
@@ -68,5 +39,4 @@ public class Sale {
     public void setSaleDate(LocalDateTime saleDate) {
         this.saleDate = saleDate;
     }
-
 }

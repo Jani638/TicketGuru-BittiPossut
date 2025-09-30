@@ -2,9 +2,14 @@
 
 ## Johdanto 
 
-Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myyntipisteessään. Järjestelmän tarkoituksena on mahdollistaa sujuva lipunmyynti myyntipisteessä. Lipuissa on koodi, joka luetaan ovella, jonka avulla lippu voidaan merkata käytetyksi. 
+Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myyntipisteessään. Järjestelmän tarkoituksena on mahdollistaa sujuva lipunmyynti myyntipisteessä. Lipuissa on koodi, joka luetaan ovella, jonka avulla lippu voidaan merkata käytetyksi. Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea.   Tulevaisuudessa järjestelmään olisi tarkoitus lisätä myös verkkokauppa. 
 
-Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea. Lipuissa on oltava helposti tarkastettava koodi, jonka avulla lippu voidaan varmistaa ovella.  Tulevaisuudessa järjestelmään olisi tarkoitus lisätä myös verkkokauppa. 
+### Sidosryhmät
+
+- Lipputoimisto (asiakas/tilaaja)
+- Lipunmyyjä (käyttäjä myyntipisteessä)
+- Asiakas (lipun ostaja)
+- Ylläpitäjä (järjestelmän hallinta )
 
 ## Järjestelmän määrittely
 
@@ -13,6 +18,10 @@ Käyttötapauskaavio:
 
 <img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
 
+## Käyttöliittymäkaavio:
+
+<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
+
 ## Toiminnalliset vaatimukset
 
 - Ylläpitäjä pystyy muokkaamaan, lisäämään ja poistamaan tapahtumia helposti. 
@@ -20,15 +29,16 @@ Tapahtumista on oltava saatavilla olennaiset tiedot kuten nimi, päivämäärä,
 
 - Lipunmyyjä pystyy valitsemaan tietyn tapahtuman ja lipputyypin. 
 
-- Liput pystyy tulostaa ovella. Lipuissa oleva koodi varmistaa, että lippu on aito ja se merkitään käytetyksi. 
+- Liput pystyy tulostamaan ovella. 
+- Lipuissa oleva koodi varmistaa, että lippu on aito ja se merkitään käytetyksi. 
 
-## Ei-toiminnalliset vaatimukset
+### Ei-toiminnalliset vaatimukset
 
 - Järjestelmän pitää olla helposti laajennettava tulevaisuuden verkkokauppa järjestelmää varten. 
 - Selkeä ja helppokäyttöinen. 
 - Järjestelmä tallentaa ja säilyttää käyttäjien tiedot turvallisesti. 
 
-## Järjestelmän rajoitukset
+### Järjestelmän rajoitukset
 
 - Aluksi järjestelmä tehdään vain  lippujen myynti myyntipisteessä, ei verkkokauppaa. 
 - Lippujen on oltava tulostettavia.
@@ -137,7 +147,75 @@ Tietokanta tukee lippujen myyntiä myyntipisteessä ja lipun tarkastusta ovella.
 - **Entity-luokat:** `User`, `Event`, `TicketType`, `Ticket`, `Sale` vastaavat tietokannan tauluja.  
 - **Repository-luokat:** Spring Data JPA -repositoryt kuten `UserRepository`, `EventRepository`, `TicketRepository` ja `SaleRepository` mahdollistavat tietokannan CRUD-toiminnot.  
 - Sovellus logiikka käyttää entityjä ja repositoryjä lippujen hallintaan, myyntiin ja tarkastukseen.
-## Käyttöliittymäkaavio:
 
-<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
+# API - Dokumentaatio
 
+## Base URL: 
+
+- http://localhost:8080/api 
+
+## Endpointit
+
+### Event: 
+
+- /api/events
+- /api/events/{id}
+
+### Sale
+- /api/sales
+- /api/sales/{id}
+
+### Ticket 
+
+- /api/tickets
+- /api/tickets/{id}
+
+### TicketType 
+
+- /api/tickets/types
+- /api/tickets/types/{id}
+
+### User
+
+- /api/users
+- /api/users/
+
+## Metodit, polku, polkuparametrit, query-parametrit esimerkkejä
+
+| Metodi | Polku | Polkuparametrit | Query-parametrit |
+|--------|-------|----------------|-----------------|
+| GET    | /api/events | – | ?date=2025-09-23&location=helsinki&page=2&limit=10 |
+| GET    | /api/events/{id} | {id}=123 | – |
+| GET    | /api/events/{id} | {id}=999 | – |
+| POST   | /api/events | – | – |
+| PUT    | /api/events/{id} | {id}=123 | ?notifyUsers=true |
+| DELETE | /api/events/{id} | {id}=123 | – |
+
+### Lyhyet kuvaukset endpointien toiminnasta
+
+#### GET /api/events
+Hakee kaikki tapahtumat. Palauttaa listan kaikista järjestelmän tapahtumista. Hakua voi rajata query-parametreilla, kuten päivämäärä, sijainti, sivutus jne.
+
+#### GET /api/events/{id}
+Hakee yksittäisen tapahtuman tunnisteen perusteella. Palauttaa tapahtuman tiedot, jos id löytyy, muuten 404 Not Found.
+
+#### POST /api/events
+Luo uuden tapahtuman. Lähetä tapahtuman tiedot pyynnön bodynä (JSON). Palauttaa luodun tapahtuman ja statuskoodin 201 Created.
+
+#### PUT /api/events/{id}
+Päivittää olemassa olevan tapahtuman annetulla id:llä. Lähetä uudet tiedot pyynnön bodynä. Palauttaa päivitetyn tapahtuman tai 404 Not Found, jos id:tä ei löydy.
+
+#### DELETE /api/events/{id}
+Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos poisto onnistuu, tai 404 Not Found, jos tapahtumaa ei löydy.
+
+### Esimerkkituloste:
+
+```java
+{
+  "id": 123,
+  "name": "OpenAI Hackathon",
+  "date": "2025-11-01",
+  "location": "Tampere",
+  "capacity": 200
+}
+```
