@@ -30,7 +30,7 @@ public class SaleService {
         sale.setTicketId(dto.getTicketId());
         sale.setCustomerId(dto.getCustomerId());
         sale.setSellerId(dto.getSellerId());
-        sale.setSaleDate(LocalDateTime.now()); // asetetaan backendissä
+        sale.setSaleDate(LocalDateTime.now());
         return saleRepository.save(sale);
     }
 
