@@ -2,11 +2,12 @@ package project.hh.ticketguru.controller;
 
 import project.hh.ticketguru.dto.SaleCreateDto;
 import project.hh.ticketguru.model.Sale;
-import project.hh.ticketguru.repository.SaleRepository;
+import project.hh.ticketguru.service.SaleService;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,51 +17,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @RestController
 @RequestMapping("/api/sales")
 public class SaleController {
 
-    private final SaleRepository saleRepository;
+    private final SaleService saleService;
 
-    public SaleController(SaleRepository saleRepository){
-        this.saleRepository = saleRepository;
+    public SaleController(SaleService saleService) {
+        this.saleService = saleService;
     }
 
     @GetMapping
-    public List<Sale> getAllSales(){
-        return saleRepository.findAll();
+    public List<Sale> getAllSales() {
+        return saleService.getAllSales();
     }
-    
+
     @GetMapping("/{id}")
-    public Optional<Sale> getSale(@PathVariable Long id) {
-        return saleRepository.findById(id);
+    public ResponseEntity<Sale> getSale(@PathVariable Long id) {
+        return saleService.getSale(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Sale createSale(@RequestBody SaleCreateDto dto) {
-        Sale sale = new Sale();
-        sale.setTicketId(dto.getTicketId());
-        sale.setCustomerId(dto.getCustomerId());
-        sale.setSellerId(dto.getSellerId());
-        sale.setSaleDate(dto.getSaleDate());
-        return saleRepository.save(sale);
+    public ResponseEntity<Sale> createSale(@RequestBody SaleCreateDto dto) {
+        Sale saved = saleService.createSale(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
-    
+
     @PutMapping("/{id}")
-    public Sale updateSale(@PathVariable Long id, @RequestBody Sale updated) {
-        Sale existing = saleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
-        existing.setTicketId(updated.getTicketId());
-        existing.setCustomerId(updated.getCustomerId());
-        existing.setSellerId(updated.getSellerId());
-        existing.setSaleDate(updated.getSaleDate());
-        return saleRepository.save(existing);
+    public ResponseEntity<Sale> updateSale(@PathVariable Long id, @RequestBody Sale updated) {
+        Sale saved = saleService.updateSale(id, updated);
+        return ResponseEntity.ok(saved);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSale(@PathVariable Long id) {
-        saleRepository.deleteById(id);
+    public ResponseEntity<Void> deleteSale(@PathVariable Long id) {
+        saleService.deleteSale(id);
+        return ResponseEntity.noContent().build();
     }
 }
