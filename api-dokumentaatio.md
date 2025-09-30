@@ -55,8 +55,8 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 
 ## Sale: 
 
-- api/events
-- api/events/{id}
+- api/sales
+- api/sales/{id}
 
 ### SaleController
 
@@ -123,3 +123,157 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 - Selkeämpi koodi
 - Helpompi testata
 - Laajennettavuus tulevaisuudessa
+
+
+## User
+
+- api/users
+- api/users/{id}
+
+### UserController
+
+| Metodi | URL               | Kuvaus                            |
+| ------ | ----------------- | --------------------------------- |
+| GET    | `/api/users`      | Hae kaikki käyttäjät              |
+| GET    | `/api/users/{id}` | Hae yksittäinen käyttäjä ID:llä   |
+| POST   | `/api/users`      | Luo uusi käyttäjä (UserCreateDto) |
+| PUT    | `/api/users/{id}` | Päivitä olemassa oleva käyttäjä   |
+| DELETE | `/api/users/{id}` | Poista käyttäjä                   |
+
+## POST-esimerkki:
+```java
+{
+  "username": "johnpork",
+  "password": "secret123",
+  "role": "admin"
+}
+```
+
+## GET-esimerkki:
+```java
+{
+  "id": 1,
+  "username": "johnpork",
+  "role": "admin"
+}
+```
+
+## PUT-esimerkki:
+```java
+{
+  "id": 1,
+  "username": "johnpork",
+  "password": "newpassword456",
+  "role": "admin"
+}
+```
+
+## DELETE- esimerkki:
+
+| DELETE | `/api/users/{id}` | Poistaa käyttäjän |
+
+
+## TicketType
+
+- api/tickettypes
+- api/tickettypes/{id}
+
+### TicketTypeController
+
+| Metodi | URL                     | Kuvaus                                        |
+| ------ | ----------------------- | --------------------------------------------- |
+| GET    | `/api/tickettypes`      | Hae kaikki lippukategoriat                    |
+| GET    | `/api/tickettypes/{id}` | Hae yksittäinen lippukategoria ID:llä         |
+| POST   | `/api/tickettypes`      | Luo uusi lippukategoria (TicketTypeCreateDto) |
+| PUT    | `/api/tickettypes/{id}` | Päivitä olemassa oleva lippukategoria         |
+| DELETE | `/api/tickettypes/{id}` | Poista lippukategoria                         |
+
+
+## POST-esimerkki:
+```java
+{
+  "eventId": 123,
+  "name": "VIP",
+  "price": 150.00,
+  "quantity": 50
+}
+```
+
+## GET-esimerkki:
+```java
+{
+  "id": 1,
+  "eventId": 123,
+  "name": "VIP",
+  "price": 150.00,
+  "quantity": 50
+}
+```
+
+## PUT-esimerkki:
+```java
+{
+  "id": 1,
+  "eventId": 123,
+  "name": "Standard",
+  "price": 75.00,
+  "quantity": 200
+}
+```
+
+## DELETE-esimerkki: 
+
+| DELETE | `/api/tickettypes/{id}` | Poistaa lippukategorian |
+
+
+## Ticket
+
+- api/tickets
+- api/tickets/{id}
+
+### TicketController
+
+| Metodi | URL                 | Kuvaus                           |
+| ------ | ------------------- | -------------------------------- |
+| GET    | `/api/tickets`      | Hae kaikki liput                 |
+| GET    | `/api/tickets/{id}` | Hae yksittäinen lippu ID:llä     |
+| POST   | `/api/tickets`      | Luo uusi lippu (TicketCreateDto) |
+| PUT    | `/api/tickets/{id}` | Päivitä olemassa oleva lippu     |
+| DELETE | `/api/tickets/{id}` | Poista lippu                     |
+
+
+## POST-esimerkki:
+```java
+{
+  "ticketTypeId": 1,
+  "code": "ABC123XYZ",
+  "sold": false,
+  "used": false
+}
+```
+
+## GET-esimerkki:
+```java
+{
+  "id": 10,
+  "ticketTypeId": 1,
+  "code": "ABC123XYZ",
+  "sold": true,
+  "used": false
+}
+```
+
+## PUT-esimerkki:
+```java
+{
+  "id": 10,
+  "ticketTypeId": 1,
+  "code": "ABC123XYZ",
+  "sold": true,
+  "used": true
+}
+```
+
+## DELETE-esimerkki:
+
+| DELETE | `/api/tickets/{id}` | Poistaa lipun |
