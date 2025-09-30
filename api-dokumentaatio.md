@@ -108,4 +108,18 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 
 | DELETE | `/api/sales/{id}` | Poistaa myyntitapahtuman | 
 
+## Miksi loimme SaleService-luokan?
 
+SaleService on apuluokka, joka hoitaa myyntitapahtuman taustatyöt. Kun käyttäjä tekee myynnin, ohjelman pitää:
+- Tarkistaa kuka ostaa ja kuka myy
+- Hakea oikeat liput
+- Varmistaa että liput eivät ole jo myyty
+- Tallentaa myynti tietokantaan
+
+Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vaikea ylläpitää. Siksi loimme SaleService-luokan, joka hoitaa nämä asiat taustalla.
+
+### Hyödyt
+
+- Selkeämpi koodi
+- Helpompi testata
+- Laajennettavuus tulevaisuudessa
