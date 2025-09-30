@@ -68,6 +68,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 | PUT    | `/api/sales/{id}` | Päivitä olemassa oleva myynti |
 | DELETE | `/api/sales/{id}` | Poista myynti |
 
+<img width="400" height="300" alt="POST api/sales" src="/Users/joelkuosmanen/git/TicketGuru-BittiPossut/POST-api-sales.png" />
 
  ## POST- esimerkki:
 
