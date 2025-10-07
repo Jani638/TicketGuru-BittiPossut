@@ -1,6 +1,6 @@
 # TicketGuru-BittiPossut
 
-## Johdanto / [API-dokumentaatio](./api-dokumentaatio.md) / [Rajapinnan-dokumentaatio](./rajapinnan-testaus.md)
+## Johdanto / [API-dokumentaatio](./api-dokumentaatio.md) / [Rajapinnan testaus-dokumentaatio](./rajapinnan-testaus.md)
 
 Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myyntipisteessään. Järjestelmän tarkoituksena on mahdollistaa sujuva lipunmyynti myyntipisteessä. Lipuissa on koodi, joka luetaan ovella, jonka avulla lippu voidaan merkata käytetyksi. Tarkoituksena on luoda järjestelmä, joka on selkeä ja nopea.   Tulevaisuudessa järjestelmään olisi tarkoitus lisätä myös verkkokauppa. 
 
