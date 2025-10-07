@@ -45,6 +45,7 @@ public class EventController {
         return eventRepository.save(event);
     }
 
+
     @PutMapping("/{id}")
     public Event updateEvent(@PathVariable Long id, @RequestBody Event updated) {
         Event existing = eventRepository.findById(id)

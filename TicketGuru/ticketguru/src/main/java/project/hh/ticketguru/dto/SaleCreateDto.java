@@ -3,25 +3,25 @@ package project.hh.ticketguru.dto;
 import java.time.LocalDateTime;
 
 public class SaleCreateDto {
-    private Long ticketId;
-    private Long customerId;
+    private Long eventId;
     private Long sellerId;
+    private Double price;
     private LocalDateTime saleDate;
 
-    public Long getTicketId() {
-        return ticketId;
+    public Long getEventId() {
+        return eventId;
     }
 
-    public void setTicketId(Long ticketId) {
-        this.ticketId = ticketId;
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Long getSellerId() {

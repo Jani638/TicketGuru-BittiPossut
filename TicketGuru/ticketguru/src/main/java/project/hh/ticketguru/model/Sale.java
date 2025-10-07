@@ -13,9 +13,11 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long ticketId;
+    private Long eventId;
     private Long customerId;
     private Long sellerId;
     private LocalDateTime saleDate;
+    private Double price;
 
     
     public Sale() {
@@ -44,6 +46,13 @@ public class Sale {
     public void setTicketId(Long ticketId) {
         this.ticketId = ticketId;
     }
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
+    }
 
     public Long getCustomerId() {
         return customerId;
@@ -69,4 +78,10 @@ public class Sale {
         this.saleDate = saleDate;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+    public void setPrice (Double price){
+        this.price = price;
+    }
 }
