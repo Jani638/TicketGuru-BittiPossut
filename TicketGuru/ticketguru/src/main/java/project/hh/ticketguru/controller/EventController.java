@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +40,7 @@ public class EventController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Event createEvent(@RequestBody Event event) {
         return eventRepository.save(event);
     }
@@ -45,7 +48,7 @@ public class EventController {
     @PutMapping("/{id}")
     public Event updateEvent(@PathVariable Long id, @RequestBody Event updated) {
         Event existing = eventRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));
         existing.setName(updated.getName());
         existing.setDateTime(updated.getDateTime());
         existing.setLocation(updated.getLocation());
