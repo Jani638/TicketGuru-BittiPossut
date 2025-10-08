@@ -2,10 +2,22 @@ package project.hh.ticketguru.dto;
 
 import java.time.LocalDateTime;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
 public class SaleCreateDto {
+
+    @NotNull
     private Long eventId;
+
+    @NotNull
     private Long sellerId;
+
+    @NotNull
+    @Min(1)
     private Double price;
+
+    @NotNull
     private LocalDateTime saleDate;
 
     public Long getEventId() {

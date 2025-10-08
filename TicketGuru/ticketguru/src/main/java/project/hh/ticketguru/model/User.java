@@ -1,9 +1,13 @@
 package project.hh.ticketguru.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 @Entity(name="app_user") //Entityn nimi nyt "app_user", koska User nimi on joku varattu avainsana sqlssä nii se tietokanta menee tyhmäksi muuten jos laittais vaan "User" jeejee//
@@ -15,9 +19,16 @@ public class User {
 
     private Long id;
     
+    @NotBlank(message = "Username is required")
+    @Size(max = 50)
     private String username;
+
+    @NotBlank(message = "Password is required")
+    //@JsonIgnore
     private String password;
 
+    @NotBlank(message = "Role is required")
+    @Size(max = 10)
     private String role;
 
 

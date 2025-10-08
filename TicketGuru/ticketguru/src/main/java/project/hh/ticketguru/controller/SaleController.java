@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/sales")
 public class SaleController {
@@ -40,13 +42,13 @@ public class SaleController {
     }
 
     @PostMapping
-    public ResponseEntity<Sale> createSale(@RequestBody SaleCreateDto dto) {
+    public ResponseEntity<Sale> createSale(@RequestBody @Valid SaleCreateDto dto) {
         Sale saved = saleService.createSale(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Sale> updateSale(@PathVariable Long id, @RequestBody Sale updated) {
+    public ResponseEntity<Sale> updateSale(@PathVariable Long id, @RequestBody @Valid Sale updated) {
         Sale saved = saleService.updateSale(id, updated);
         return ResponseEntity.ok(saved);
     }

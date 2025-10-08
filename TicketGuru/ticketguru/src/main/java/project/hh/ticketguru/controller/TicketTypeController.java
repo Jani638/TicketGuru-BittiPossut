@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -41,12 +43,12 @@ public class TicketTypeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TicketType createTicketType(@RequestBody TicketType ticketType) {
+    public TicketType createTicketType(@RequestBody @Valid TicketType ticketType) {
         return ticketTypeRepository.save(ticketType);
     }
     
     @PutMapping("/{id}")
-    public TicketType updateTicketType(@PathVariable Long id, @RequestBody TicketType updated) {
+    public TicketType updateTicketType(@PathVariable Long id, @RequestBody @Valid TicketType updated) {
         TicketType existing = ticketTypeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
         existing.setEventId(updated.getEventId());

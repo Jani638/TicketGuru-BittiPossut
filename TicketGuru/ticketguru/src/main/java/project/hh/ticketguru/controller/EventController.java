@@ -9,6 +9,9 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,13 +44,13 @@ public class EventController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Event createEvent(@RequestBody Event event) {
+    public Event createEvent(@RequestBody @Valid Event event) {
         return eventRepository.save(event);
     }
 
 
     @PutMapping("/{id}")
-    public Event updateEvent(@PathVariable Long id, @RequestBody Event updated) {
+    public Event updateEvent(@PathVariable Long id, @RequestBody @Valid Event updated) {
         Event existing = eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
         existing.setName(updated.getName());
