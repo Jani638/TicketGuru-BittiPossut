@@ -27,8 +27,8 @@ public class SaleService {
 
     public Sale createSale(SaleCreateDto dto) {
         Sale sale = new Sale();
-        sale.setTicketId(dto.getTicketId());
-        sale.setCustomerId(dto.getCustomerId());
+        sale.setEventId(dto.getEventId());
+        sale.setPrice(dto.getPrice());
         sale.setSellerId(dto.getSellerId());
         sale.setSaleDate(LocalDateTime.now());
         return saleRepository.save(sale);
