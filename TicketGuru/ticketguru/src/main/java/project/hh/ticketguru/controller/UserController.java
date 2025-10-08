@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -41,12 +43,12 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) {
+    public User createUser(@RequestBody @Valid User user) {
         return userRepository.save(user);
     }
     
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User updated) {
+    public User updateUser(@PathVariable Long id, @RequestBody @Valid User updated) {
         User existing = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
         existing.setUsername(updated.getUsername());

@@ -121,7 +121,3 @@ Tässä dokumentissa kuvataan, miten testataan API-rajapinnan toimintaa, jotta s
 - **DELETE /api/tickets/{id}**  
   Olemassa oleva id → **204**.  
   Olematon id → **404**.
-
-## 500-koodin varmistaminen
-
-- Testaa virheellisiä pyyntöjä kaikilla resursseilla (esim. puuttuvat kentät, väärä datatyyppi, liian pitkä data) ja varmista, että vastauskoodi ei koskaan ole **500**.

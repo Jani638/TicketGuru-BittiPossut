@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Sale {
@@ -12,11 +14,21 @@ public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    
     private Long ticketId;
+
     private Long eventId;
+
     private Long customerId;
+
+    
     private Long sellerId;
+
+    
     private LocalDateTime saleDate;
+
+    
     private Double price;
 
     
