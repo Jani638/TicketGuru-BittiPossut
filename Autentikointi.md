@@ -21,8 +21,8 @@ Projektiin on lisätty HTTP Basic Authentication - suojaus kaikille /api/** endp
 ```
 ### Testikäyttäjä
 
-**Käyttäjä:** `user`\
-**Salasana:** `password`
+**Username:** `user`\
+**Password:** `password`
 
 Testikäyttäjä on kovakoodattu käyttäen `InMemoryUserDetailsManager`-ratkaisua.
 
