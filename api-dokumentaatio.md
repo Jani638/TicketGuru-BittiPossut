@@ -175,8 +175,8 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 
 ## TicketType
 
-- api/tickettypes
-- api/tickettypes/{id}
+- api/tickets/types
+- api/tickets/types/{id}
 
 ### TicketTypeController
 
