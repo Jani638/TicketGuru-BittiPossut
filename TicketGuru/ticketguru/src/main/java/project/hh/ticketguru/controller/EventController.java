@@ -52,7 +52,7 @@ public class EventController {
     @PutMapping("/{id}")
     public Event updateEvent(@PathVariable Long id, @RequestBody @Valid Event updated) {
         Event existing = eventRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));
         existing.setName(updated.getName());
         existing.setDateTime(updated.getDateTime());
         existing.setLocation(updated.getLocation());

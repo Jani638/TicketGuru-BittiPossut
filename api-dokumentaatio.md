@@ -182,11 +182,11 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 
 | Metodi | URL                     | Kuvaus                                        |
 | ------ | ----------------------- | --------------------------------------------- |
-| GET    | `/api/tickettypes`      | Hae kaikki lippukategoriat                    |
-| GET    | `/api/tickettypes/{id}` | Hae yksittäinen lippukategoria ID:llä         |
-| POST   | `/api/tickettypes`      | Luo uusi lippukategoria (TicketTypeCreateDto) |
-| PUT    | `/api/tickettypes/{id}` | Päivitä olemassa oleva lippukategoria         |
-| DELETE | `/api/tickettypes/{id}` | Poista lippukategoria                         |
+| GET    | `/api/tickets/types`      | Hae kaikki lippukategoriat                    |
+| GET    | `/api/tickets/types/{id}` | Hae yksittäinen lippukategoria ID:llä         |
+| POST   | `/api/tickets/types`      | Luo uusi lippukategoria (TicketTypeCreateDto) |
+| PUT    | `/api/tickets/types/{id}` | Päivitä olemassa oleva lippukategoria         |
+| DELETE | `/api/tickets/types/{id}` | Poista lippukategoria                         |
 
 
 ## POST-esimerkki:
