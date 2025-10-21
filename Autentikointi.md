@@ -8,6 +8,19 @@ Projektiin on lisätty HTTP Basic Authentication - suojaus kaikille /api/** endp
 
 ## Toteutus
 
+### Riippuvuudet
+
+`pom.xml`-tiedostoon lisätty: 
+
+```xml
+</dependency>
+		<dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-security</artifactId>
+	</dependency>
+```
+### Testikäyttäjä
+
 **Käyttäjä:** `user`\
 **Salasana:** `password`
 
