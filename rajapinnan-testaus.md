@@ -80,23 +80,23 @@ Tässä dokumentissa kuvataan, miten testataan API-rajapinnan toimintaa, jotta s
 
 ### 4. TicketTypes
 
-- **GET /api/tickettypes**  
+- **GET /api/tickets/types**  
   Kaikki lippukategoriat → **200**.
 
-- **GET /api/tickettypes/{id}**  
+- **GET /api/tickets/types/{id}**  
   Olemassa oleva id → **200**.  
   Olematon id → **404**.
 
-- **POST /api/tickettypes**  
+- **POST /api/tickets/types**  
   Puuttuvat kentät (eventId, name, price, quantity) → **400**.  
   Oikea data → **201**.
 
-- **PUT /api/tickettypes/{id}**  
+- **PUT /api/tickets/types/{id}**  
   Olemassa oleva id & oikea data → **200**.  
   Puuttuvat kentät → **400**.  
   Olematon id → **404**.
 
-- **DELETE /api/tickettypes/{id}**  
+- **DELETE /api/tickets/types/{id}**  
   Olemassa oleva id → **204**.  
   Olematon id → **404**.
 
