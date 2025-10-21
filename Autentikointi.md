@@ -76,9 +76,9 @@ Tästä tulee virhekoodi 401, Unauthorized. Eli pääsyyn ei ole oikeuksia koska
 
 ### Autentikaatiolla
 
-Authorization → Basic Auth 
+Authorization → Basic Auth: 
 
-**Username:** `user`
+**Username:** `user`\
 **Password:** `password` 
 
 **Pyyntö:** GET http://localhost:8080/api/users 
@@ -89,4 +89,4 @@ Authorization → Basic Auth
 [{"id":1,"username":"seller1","password":"password","role":"SELLER"},{"id":2,"username":"seller2","password":"password","role":"SELLER"}]
 ```
 
-Suojaus onnistui, koska nyt kirjautuneena pystyy näkemään käyttäjien tiedot.
+Suojaus onnistui, koska nyt kirjautuneena pystyy näkemään käyttäjien tiedot. Sama toimii muillekkin endpointeille. 
