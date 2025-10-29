@@ -2,7 +2,7 @@
 
 ## Julkaisu
 
-Projekti on julkaistu pilvipalveluun osoitteessa https://ticket-guru-bitti-possut-ticketguru-bittipossut.2.rahtiapp.fi
+Projekti on julkaistu pilvipalveluun osoitteessa https://ticket-guru-bitti-possut-ticketguru-bittipossut.2.rahtiapp.fi/api/users
 
 
 ## Tietokanta
