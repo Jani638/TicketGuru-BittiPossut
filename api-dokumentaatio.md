@@ -246,34 +246,78 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 ```java
 {
   "ticketTypeId": 1,
-  "code": "ABC123XYZ",
+  "code": "VIP001",
   "sold": false,
-  "used": false
+  "used": null
 }
 ```
 
 ## GET-esimerkki:
 ```java
 {
-  "id": 10,
+  "id": 1,
   "ticketTypeId": 1,
-  "code": "ABC123XYZ",
+  "code": "VIP001",
   "sold": true,
-  "used": false
+  "used": null
 }
 ```
 
 ## PUT-esimerkki:
 ```java
 {
-  "id": 10,
+  "id": 1,
   "ticketTypeId": 1,
-  "code": "ABC123XYZ",
+  "code": "VIP001",
   "sold": true,
-  "used": true
+  "used": null
 }
 ```
 
 ## DELETE-esimerkki:
 
 | DELETE | `/api/tickets/{id}` | Poistaa lipun |
+
+
+## Lippukoodin perusteella hakeminen:
+
+| Metodi | URL                 | Kuvaus                           |
+| ------ | ------------------- | -------------------------------- |
+| GET    | `/api/tickets?=VIP001`      | Hakee lipun koodin perusteella                 |
+|
+## Esimerkki:
+```java
+{
+  "id": 1,
+  "ticketTypeId": 1,
+  "code": "VIP001",
+  "sold": false,
+  "used": null
+}
+```
+
+## Patch-esimerkki:
+
+| Metodi | URL                 | Kuvaus                           |
+| ------ | ------------------- | -------------------------------- |
+| PATCH    | `/api/tickets/10`      | Merkkaa lipun käytetyksi ja asettaa ajankohdan                 |
+|
+#### Body valitse raw ja JSON, ja kirjoita
+```json
+{
+    "used": "2023-11-07T07:03:46"
+}
+```
+
+## Esimerkki:
+```java
+{
+    "id": 10,
+    "ticketTypeId": 1,
+    "code": "VIP001",
+    "sold": false,
+    "used": "2023-11-07T07:03:46"
+}
+```
+
+
