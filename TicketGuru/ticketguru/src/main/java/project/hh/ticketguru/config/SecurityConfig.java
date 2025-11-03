@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -19,9 +21,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((authz) -> authz
+                .requestMatchers(toH2Console()).permitAll()
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll())
-                .httpBasic(Customizer.withDefaults());
+            .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
+            .csrf(csrf -> csrf
+                .ignoringRequestMatchers(toH2Console())
+                .ignoringRequestMatchers("/api/**"))
+            .httpBasic(Customizer.withDefaults());
         return http.build();
     }
 
