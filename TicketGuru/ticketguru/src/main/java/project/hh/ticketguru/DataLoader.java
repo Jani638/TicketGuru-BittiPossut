@@ -52,9 +52,9 @@ public class DataLoader implements CommandLineRunner {
         ticketTypeRepository.save(jazzRegular);
 
         
-        Ticket ticket1 = new Ticket(null, vip.getId(), "VIP001", false, false);
-        Ticket ticket2 = new Ticket(null, regular.getId(), "REG001", false, false);
-        Ticket ticket3 = new Ticket(null, jazzRegular.getId(), "JAZZ001", false, false);
+        Ticket ticket1 = new Ticket(null, vip.getId(), "VIP001", false, null);
+        Ticket ticket2 = new Ticket(null, regular.getId(), "REG001", false, null);
+        Ticket ticket3 = new Ticket(null, jazzRegular.getId(), "JAZZ001", false, null);
         ticketRepository.save(ticket1);
         ticketRepository.save(ticket2);
         ticketRepository.save(ticket3);
