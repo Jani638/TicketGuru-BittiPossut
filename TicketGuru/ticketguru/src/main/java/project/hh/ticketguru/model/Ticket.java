@@ -1,5 +1,7 @@
 package project.hh.ticketguru.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,13 +25,12 @@ public class Ticket {
     @NotNull
     private Boolean sold;
 
-    @NotNull
-    private Boolean used;
+    private LocalDateTime used;
 
     public Ticket() {
     }
 
-    public Ticket(Long id, Long ticketTypeId, String code, Boolean sold, Boolean used) {
+    public Ticket(Long id, Long ticketTypeId, String code, Boolean sold, LocalDateTime used) {
         this.id = id;
         this.ticketTypeId = ticketTypeId;
         this.code = code;
@@ -69,11 +70,11 @@ public class Ticket {
         this.sold = sold;
     }
 
-    public Boolean getUsed() {
+    public LocalDateTime getUsed() {
         return used;
     }
 
-    public void setUsed(Boolean used) {
+    public void setUsed(LocalDateTime used) {
         this.used = used;
     }
 }

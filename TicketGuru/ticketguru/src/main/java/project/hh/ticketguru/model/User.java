@@ -1,15 +1,17 @@
 package project.hh.ticketguru.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
-@Entity(name="app_user") //Entityn nimi nyt "app_user", koska User nimi on joku varattu avainsana sqlssä nii se tietokanta menee tyhmäksi muuten jos laittais vaan "User" jeejee//
-
+@Entity 
+@Table(name="app_user")
 public class User {
 
     @Id
@@ -19,14 +21,17 @@ public class User {
     
     @NotBlank(message = "Username is required")
     @Size(max = 50)
+    @Column(name = "username")
     private String username;
 
     @NotBlank(message = "Password is required")
     //@JsonIgnore
+    @Column(name = "password")
     private String password;
 
     @NotBlank(message = "Role is required")
     @Size(max = 10)
+    @Column(name = "role")
     private String role;
 
 
