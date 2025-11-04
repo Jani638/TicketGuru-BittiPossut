@@ -283,7 +283,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 
 | Metodi | URL                 | Kuvaus                           |
 | ------ | ------------------- | -------------------------------- |
-| GET    | `/api/tickets?=VIP001`      | Hakee lipun koodin perusteella                 |
+| GET    | `/api/tickets?code=VIP001`      | Hakee lipun koodin perusteella                 |
 |
 ## Esimerkki:
 ```java
