@@ -70,4 +70,5 @@ public class TicketguruApplicationIntegrationTests {
                 .with(httpBasic("user", "password")))
                 .andExpect(status().isNotFound());
     }
+    
 }
