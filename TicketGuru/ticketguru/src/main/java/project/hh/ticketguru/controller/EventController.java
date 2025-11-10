@@ -39,6 +39,7 @@ public class EventController {
     }
     
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public Optional<Event> getEvent(@PathVariable Long id) {
         return eventRepository.findById(id);
     }
@@ -62,6 +63,7 @@ public class EventController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEvent(@PathVariable Long id) {
         eventRepository.deleteById(id);
     }
