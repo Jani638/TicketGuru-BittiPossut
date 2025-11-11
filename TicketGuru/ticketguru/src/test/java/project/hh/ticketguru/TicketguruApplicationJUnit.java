@@ -39,7 +39,7 @@ public class TicketguruApplicationJUnit {
     @Test
     public void createNewTicket() {
 
-        //uusi event
+        // uusi event
         Event event = new Event();
         event.setName("Rock Concert");
         event.setDateTime(LocalDateTime.now().plusDays(20));
@@ -47,7 +47,7 @@ public class TicketguruApplicationJUnit {
         event.setCapacity(1000);
         eventRepository.save(event);
 
-        //uusi tickettype
+        // uusi tickettype
         TicketType ticketType = new TicketType();
         ticketType.setName("VIP");
         ticketType.setQuantity(2);
@@ -55,7 +55,7 @@ public class TicketguruApplicationJUnit {
         ticketType.setEventId(event.getId());
         ticketTypeRepository.save(ticketType);
 
-        //uusi ticket
+        // uusi ticket
         Ticket ticket = new Ticket();
         ticket.setTicketTypeId(ticketType.getId());
         ticket.setCode("OK123");
@@ -63,7 +63,7 @@ public class TicketguruApplicationJUnit {
         ticket.setUsed(null);
         Ticket savedTicket = ticketRepository.save(ticket);
 
-        //varmistetaan, että lippu tallentui oikein
+        // varmistetaan, että lippu tallentui oikein
         assertNotNull(savedTicket.getId());
         assertEquals("OK123", savedTicket.getCode());
         assertFalse(savedTicket.getSold());
@@ -72,7 +72,7 @@ public class TicketguruApplicationJUnit {
 
     @Test
     public void findByTicketId() {
-        //uusi event
+        // uusi event
         Event event = new Event();
         event.setName("Coldplay");
         event.setDateTime(LocalDateTime.now().plusDays(500));
@@ -80,7 +80,7 @@ public class TicketguruApplicationJUnit {
         event.setCapacity(80000);
         eventRepository.save(event);
 
-        //uusi tickettype
+        // uusi tickettype
         TicketType ticketType = new TicketType();
         ticketType.setName("VIP");
         ticketType.setQuantity(4);
@@ -136,15 +136,30 @@ public class TicketguruApplicationJUnit {
     }
 
     @Test
-    public void testMarkAsSold(){
-        
+    public void testMarkAsSold() {
+
         Ticket ticket = new Ticket();
         ticket.setSold(false);
 
         // muutetaan myydyksi
         ticket.setSold(true);
 
-        //tarkistetaan että päivittyi
+        // tarkistetaan että päivittyi
         assertTrue(ticket.getSold());
+    }
+
+    @Test
+    public void testCreateEvent() {
+        Event event = new Event();
+        event.setName("Tikkurila Festival");
+        event.setDateTime(LocalDateTime.now().plusDays(200));
+        event.setLocation("Tikkurila");
+        event.setCapacity(7000);
+
+        // tarkistetaan
+        assertEquals("Tikkurila Festival", event.getName());
+        assertEquals("Tikkurila", event.getLocation());
+        assertEquals(7000, event.getCapacity());
+        assertNotNull(event.getDateTime());
     }
 }
