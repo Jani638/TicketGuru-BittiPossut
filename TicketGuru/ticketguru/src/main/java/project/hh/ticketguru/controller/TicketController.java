@@ -2,8 +2,6 @@ package project.hh.ticketguru.controller;
 
 import project.hh.ticketguru.model.Ticket;
 import project.hh.ticketguru.repository.TicketRepository;
-
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
