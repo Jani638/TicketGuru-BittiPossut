@@ -22,7 +22,7 @@ import project.hh.ticketguru.repository.TicketTypeRepository;
 import project.hh.ticketguru.repository.UserRepository;
 
 @DataJpaTest
-public class TicketguruApplicationJUnit {
+public class TicketguruApplicationJUnitTests {
 
     @Autowired
     private TicketRepository ticketRepository;
