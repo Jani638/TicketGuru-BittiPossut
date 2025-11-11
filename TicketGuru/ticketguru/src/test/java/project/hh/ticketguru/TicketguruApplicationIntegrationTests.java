@@ -48,8 +48,22 @@ public class TicketguruApplicationIntegrationTests {
                 .andExpect(jsonPath("$.location", equalTo("Helsinki Arena")))
                 .andExpect(jsonPath("$.capacity", equalTo(5000)));
     }
-    
+
     @Test
+    public void testUpdateEventEndpoint() throws Exception {
+        String updatedEventJson = "{\"name\":\"Päivitetty konsertti\",\"dateTime\":\"2025-12-15T20:00:00\",\"location\":\"Tampere Arena\",\"capacity\":6000}";
+
+        mockMvc.perform(put("/api/events/1")
+                .contentType("application/json")
+                .content(updatedEventJson)
+                .with(httpBasic("user", "password")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", equalTo("Päivitetty konsertti")))
+                .andExpect(jsonPath("$.location", equalTo("Tampere Arena")))
+                .andExpect(jsonPath("$.capacity", equalTo(6000)));
+}
+    
+    @Test 
     public void testDeleteEvent() throws Exception {
         mockMvc.perform(delete("/api/events/1")
                 .with(httpBasic("user", "password")))
