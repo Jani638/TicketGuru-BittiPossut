@@ -16,11 +16,11 @@ Asiakkaamme on lipputoimisto, joka haluaa parantaa lippujen myyntiä heidän myy
 ## Käyttötapaukset
 Käyttötapauskaavio:
 
-<img width="400" height="300" alt="Käyttötapauskaavio" src="https://github.com/user-attachments/assets/b7ebd84c-8237-4d35-b3e8-7e5df6cba0a3" />
+<img width="628" height="613" alt="image" src="https://github.com/user-attachments/assets/b00c3ebb-c0ae-4693-95c9-7befce2e4979" />
 
 ## Käyttöliittymäkaavio:
 
-<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
+<img width="680" height="350" alt="image" src="https://github.com/user-attachments/assets/d63e556f-6dc5-41f8-a2a9-bfcc67e92a56" />
 
 ## Toiminnalliset vaatimukset
 
