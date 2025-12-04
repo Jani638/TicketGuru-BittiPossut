@@ -20,7 +20,7 @@ Käyttötapauskaavio:
 
 ## Käyttöliittymäkaavio:
 
-<img width="400" height="300" alt="Käyttöliittymäkaavio" src="https://github.com/user-attachments/assets/c730b469-d93b-492f-9f37-d75fe6316436" />
+<img width="680" height="350" alt="image" src="https://github.com/user-attachments/assets/d63e556f-6dc5-41f8-a2a9-bfcc67e92a56" />
 
 ## Toiminnalliset vaatimukset
 
