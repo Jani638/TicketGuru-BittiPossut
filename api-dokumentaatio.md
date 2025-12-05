@@ -3,7 +3,7 @@
 ## Base URL: 
 
 - http://localhost:8080/api
-- 
+  
 ## Event API: 
 ### Endpointit
 
