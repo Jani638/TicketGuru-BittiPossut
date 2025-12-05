@@ -42,7 +42,7 @@ Yksikkötestien tarkoitus on testata yksittäisiä luokkia ja metodeita.
 ### Mitä testattiin? : 
 -  Ticket ja Event-olioiden kenttien oikeellisuus
 -  Lipun `sold` status päivittyy oikein
--  ID-generointii toimii
+-  ID-generointi toimii
   
 ## Integraatiotestaus
 
