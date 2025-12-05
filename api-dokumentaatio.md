@@ -2,16 +2,15 @@
 
 ## Base URL: 
 
-- http://localhost:8080/api 
-
-## Endpointit
-
-### Event: 
+- http://localhost:8080/api
+- 
+## Event API: 
+### Endpointit
 
 - /api/events
 - /api/events/{id}
 
-## Metodit, polku, polkuparametrit, query-parametrit events:
+## Metodit ja parametrit:
 
 | Metodi | Polku | Polkuparametrit | Query-parametrit |
 |--------|-------|----------------|-----------------|
@@ -22,7 +21,7 @@
 | PUT    | /api/events/{id} | {id}=123 | ?notifyUsers=true |
 | DELETE | /api/events/{id} | {id}=123 | – |
 
-### Lyhyet kuvaukset endpointien toiminnasta
+### Toiminnan kuvaus
 
 #### GET /api/events
 Hakee kaikki tapahtumat. Palauttaa listan kaikista järjestelmän tapahtumista. Hakua voi rajata query-parametreilla, kuten päivämäärä, sijainti, sivutus jne.
@@ -50,10 +49,9 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 }
 ```
 - **POST-pyynnöissä** ID:tä ei anneta — se luodaan automaattisesti palvelimella.
-
-## Endpointit
-
-## Sale: 
+  
+## Sale API: 
+### Endpointit
 
 - api/sales
 - api/sales/{id}
@@ -70,7 +68,8 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 
 <img src="https://github.com/Jani638/TicketGuru-BittiPossut/blob/feature/Joel/POST-api-sales.png?raw=true" alt="POST api/sales" width=400 />
 
- ## POST- esimerkki:
+ ## Esimerkit
+ ## POST
 
  ```java
     {
@@ -81,7 +80,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 ```
 - **POST-pyynnöissä** ID:tä ei anneta — se luodaan automaattisesti palvelimella.
 
-## GET- esimerkki:
+## GET:
 
 ```java
 {
@@ -93,7 +92,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 }
 ```
 
-## PUT- esimerkki:
+## PUT
 ```java
 {
     "id": 1,
@@ -104,29 +103,21 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 }
 ```
 
-## DELETE- esimerkki:
+## DELETE
 
 | DELETE | `/api/sales/{id}` | Poistaa myyntitapahtuman | 
 
-## Miksi loimme SaleService-luokan?
+## Miksi SaleService - luokka?
+SaleService on apuluokka, joka vastaa: 
+- asiakkaan ja myyjän tarkistuksesta
+- lipun hakemisesta
+- lipun tilan varmistamisesta
+- myynnin tallennuksesta
 
-SaleService on apuluokka, joka hoitaa myyntitapahtuman taustatyöt. Kun käyttäjä tekee myynnin, ohjelman pitää:
-- Tarkistaa kuka ostaa ja kuka myy
-- Hakea oikeat liput
-- Varmistaa että liput eivät ole jo myyty
-- Tallentaa myynti tietokantaan
+`Hyödyt:` selkeämpi controller ja koodi. Parempi testattavuus ja hyvä laajennettavuus. 
 
-Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vaikea ylläpitää. Siksi loimme SaleService-luokan, joka hoitaa nämä asiat taustalla.
-
-### Hyödyt
-
-- Selkeämpi koodi
-- Helpompi testata
-- Laajennettavuus tulevaisuudessa
-
-
-## User
-
+## User API 
+### Endpointit
 - api/users
 - api/users/{id}
 
@@ -140,7 +131,9 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 | PUT    | `/api/users/{id}` | Päivitä olemassa oleva käyttäjä   |
 | DELETE | `/api/users/{id}` | Poista käyttäjä                   |
 
-## POST-esimerkki:
+## Esimerkit 
+
+## POST
 ```java
 {
   "username": "johnpork",
@@ -149,7 +142,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## GET-esimerkki:
+## GET
 ```java
 {
   "id": 1,
@@ -158,7 +151,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## PUT-esimerkki:
+## PUT
 ```java
 {
   "id": 1,
@@ -168,13 +161,14 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## DELETE- esimerkki:
+## DELETE
 
 | DELETE | `/api/users/{id}` | Poistaa käyttäjän |
 
 
-## TicketType
+## TicketType API 
 
+### Endpointit
 - api/tickets/types
 - api/tickets/types/{id}
 
@@ -188,8 +182,8 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 | PUT    | `/api/tickets/types/{id}` | Päivitä olemassa oleva lippukategoria         |
 | DELETE | `/api/tickets/types/{id}` | Poista lippukategoria                         |
 
-
-## POST-esimerkki:
+## Esimerkit
+## POST
 ```java
 {
   "eventId": 123,
@@ -199,7 +193,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## GET-esimerkki:
+## GET
 ```java
 {
   "id": 1,
@@ -210,7 +204,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## PUT-esimerkki:
+## PUT
 ```java
 {
   "id": 1,
@@ -221,13 +215,14 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## DELETE-esimerkki: 
+## DELETE
 
 | DELETE | `/api/tickettypes/{id}` | Poistaa lippukategorian |
 
 
-## Ticket
+## Ticket API 
 
+## Endpointit
 - api/tickets
 - api/tickets/{id}
 
@@ -241,8 +236,9 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 | PUT    | `/api/tickets/{id}` | Päivitä olemassa oleva lippu     |
 | DELETE | `/api/tickets/{id}` | Poista lippu                     |
 
+## Esimerkit 
 
-## POST-esimerkki:
+## POST
 ```java
 {
   "ticketTypeId": 1,
@@ -252,7 +248,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## GET-esimerkki:
+## GET
 ```java
 {
   "id": 1,
@@ -263,7 +259,7 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## PUT-esimerkki:
+## PUT
 ```java
 {
   "id": 1,
@@ -274,12 +270,12 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## DELETE-esimerkki:
+## DELETE
 
 | DELETE | `/api/tickets/{id}` | Poistaa lipun |
 
 
-## Lippukoodin perusteella hakeminen:
+## Hakeminen lippukoodilla
 
 | Metodi | URL                 | Kuvaus                           |
 | ------ | ------------------- | -------------------------------- |
@@ -296,20 +292,25 @@ Jos kaikki tämä tehtäisiin suoraan controllerissa, koodi olisi sekavaa ja vai
 }
 ```
 
-## Patch-esimerkki:
+## Patch - Merkitse lippu käytetyksi
+
+PATCH/api/tickets/{id}
 
 | Metodi | URL                 | Kuvaus                           |
 | ------ | ------------------- | -------------------------------- |
 | PATCH    | `/api/tickets/10`      | Merkkaa lipun käytetyksi ja asettaa ajankohdan                 |
 |
-#### Body valitse raw ja JSON, ja kirjoita
+
+#### Body
+Valitse raw ja JSON, ja kirjoita:
+
 ```json
 {
     "used": "2023-11-07T07:03:46"
 }
 ```
 
-## Esimerkki:
+## Vastaus
 ```java
 {
     "id": 10,
