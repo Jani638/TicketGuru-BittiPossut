@@ -2,6 +2,10 @@
 
 Jaoimme testauksen kolmeen eri pääluokkaan. **Yksikkötestaukseen**, **integraatiotestaukseen** ja **End-to-End (E2E)**. 
 
+## Testauskäytännöt 
+- Testit ajetaan JUnit 5 - kehitysympäristössä.
+- Integraatiotestit käyttävät in-memory tietokantaa (H2).
+- E2E-testit hyödyntävät myös TestRestTemplatea ja autentikointia.
 
 ## Yksikkötestaus (JUnit)
 
@@ -100,6 +104,5 @@ Nämä testit antavat selkeän kuvan siitä, miltä lippujen myyntiprosessi näy
 - Lipun luonti ja tallennus tietokantaan
 - Lipun haku koodilla
 - Lipun merkitseminen käytetyksi
-- Verhetilanteiden käsittely
-
+- Virhetilanteiden käsittely
 
