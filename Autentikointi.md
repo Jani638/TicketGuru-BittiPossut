@@ -5,9 +5,6 @@
 Projektiin on lisätty HTTP Basic Authentication - suojaus kaikille /api/** endpointeille. Eli kaikki API-pyynnöt vaativat kirjautumisen.  
 
 ---
-
-## Toteutus
-
 ### Riippuvuudet
 
 `pom.xml`-tiedostoon lisätty: 
@@ -19,12 +16,7 @@ Projektiin on lisätty HTTP Basic Authentication - suojaus kaikille /api/** endp
     	<artifactId>spring-boot-starter-security</artifactId>
 	</dependency>
 ```
-### Testikäyttäjä
-
-**Username:** `user`\
-**Password:** `password`
-
-Testikäyttäjä on kovakoodattu käyttäen `InMemoryUserDetailsManager`-ratkaisua.
+### SecurityConfig 
 
 ```java
 @Configuration
@@ -56,6 +48,32 @@ public class SecurityConfig {
 
 ## Testaus / Postman
 
+### Testikäyttäjä
+
+**Username:** `user`\
+**Password:** `password`
+
+Testikäyttäjä on kovakoodattu käyttäen `InMemoryUserDetailsManager`-ratkaisua.
+
+### Autentikaatiolla
+
+**Pyyntö:** GET http://localhost:8080/api/users 
+
+**Vastaus:**
+
+```json 
+[{"id":1,
+"username": "seller1",
+"password": "password",
+"role":"SELLER"},
+
+{"id":2,
+"username":"seller2",
+"password":"password",
+"role":"SELLER"}]
+```
+Pyyntö onnistui. 
+
 ### Ilman autentikaatiota
 
 **Pyyntö:** GET http://localhost:8080/api/users 
@@ -71,22 +89,5 @@ public class SecurityConfig {
     "path": "/api/users"
 }
 ```
+Palauttaa 401 Unauthorized.
 
-Tästä tulee virhekoodi 401, Unauthorized. Eli pääsyyn ei ole oikeuksia koska käyttäjä ei vielä ole kirjautunut. 
-
-### Autentikaatiolla
-
-Authorization → Basic Auth: 
-
-**Username:** `user`\
-**Password:** `password` 
-
-**Pyyntö:** GET http://localhost:8080/api/users 
-
-**Vastaus:**
-
-```json 
-[{"id":1,"username":"seller1","password":"password","role":"SELLER"},{"id":2,"username":"seller2","password":"password","role":"SELLER"}]
-```
-
-Suojaus onnistui, koska nyt kirjautuneena pystyy näkemään käyttäjien tiedot. Sama toimii muillekkin endpointeille. 
