@@ -27,10 +27,8 @@ Yksikkötestien tarkoitus on testata yksittäisiä luokkia ja metodeita.
         assertEquals(7000, event.getCapacity());
         assertNotNull(event.getDateTime());
     }
-```
 
-```java
-    @Test
+@Test
     public void testMarkAsSold() {
 
         Ticket ticket = new Ticket();
@@ -39,6 +37,8 @@ Yksikkötestien tarkoitus on testata yksittäisiä luokkia ja metodeita.
         assertTrue(ticket.getSold());
     }
 ```
+
+   
 ### Mitä testattiin? : 
 -  Ticket ja Event-olioiden kenttien oikeellisuus
 -  Lipun `sold` status päivittyy oikein
