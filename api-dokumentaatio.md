@@ -21,18 +21,18 @@
 | PUT    | /api/events/{id} | {id}=123 | ?notifyUsers=true |
 | DELETE | /api/events/{id} | {id}=123 | – |
 
-### Toiminnan kuvaus
+## Toiminnan kuvaus
 
-#### GET /api/events
+### GET /api/events
 Hakee kaikki tapahtumat. Palauttaa listan kaikista järjestelmän tapahtumista. Hakua voi rajata query-parametreilla, kuten päivämäärä, sijainti, sivutus jne.
 
-#### GET /api/events/{id}
+### GET /api/events/{id}
 Hakee yksittäisen tapahtuman tunnisteen perusteella. Palauttaa tapahtuman tiedot, jos id löytyy, muuten 404 Not Found.
 
-#### POST /api/events
+### POST /api/events
 Luo uuden tapahtuman. Lähetä tapahtuman tiedot pyynnön bodynä (JSON). Palauttaa luodun tapahtuman ja statuskoodin 201 Created.
 
-#### PUT /api/events/{id}
+### PUT /api/events/{id}
 Päivittää olemassa olevan tapahtuman annetulla id:llä. Lähetä uudet tiedot pyynnön bodynä. Palauttaa päivitetyn tapahtuman tai 404 Not Found, jos id:tä ei löydy.
 
 #### DELETE /api/events/{id}
@@ -69,7 +69,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 <img src="https://github.com/Jani638/TicketGuru-BittiPossut/blob/feature/Joel/POST-api-sales.png?raw=true" alt="POST api/sales" width=400 />
 
  ## Esimerkit
- ## POST
+ #### POST
 
  ```java
     {
@@ -80,7 +80,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 ```
 - **POST-pyynnöissä** ID:tä ei anneta — se luodaan automaattisesti palvelimella.
 
-## GET:
+#### GET:
 
 ```java
 {
@@ -92,7 +92,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 }
 ```
 
-## PUT
+#### PUT
 ```java
 {
     "id": 1,
@@ -103,7 +103,7 @@ Poistaa tapahtuman annetulla id:llä. Palauttaa statuskoodin 204 No Content, jos
 }
 ```
 
-## DELETE
+#### DELETE
 
 | DELETE | `/api/sales/{id}` | Poistaa myyntitapahtuman | 
 
@@ -133,7 +133,7 @@ SaleService on apuluokka, joka vastaa:
 
 ## Esimerkit 
 
-## POST
+#### POST
 ```java
 {
   "username": "johnpork",
@@ -142,7 +142,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## GET
+#### GET
 ```java
 {
   "id": 1,
@@ -151,7 +151,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## PUT
+#### PUT
 ```java
 {
   "id": 1,
@@ -161,10 +161,9 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## DELETE
+#### DELETE
 
 | DELETE | `/api/users/{id}` | Poistaa käyttäjän |
-
 
 ## TicketType API 
 
@@ -183,7 +182,7 @@ SaleService on apuluokka, joka vastaa:
 | DELETE | `/api/tickets/types/{id}` | Poista lippukategoria                         |
 
 ## Esimerkit
-## POST
+#### POST
 ```java
 {
   "eventId": 123,
@@ -193,7 +192,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## GET
+#### GET
 ```java
 {
   "id": 1,
@@ -204,7 +203,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## PUT
+#### PUT
 ```java
 {
   "id": 1,
@@ -215,14 +214,14 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## DELETE
+#### DELETE
 
 | DELETE | `/api/tickettypes/{id}` | Poistaa lippukategorian |
 
 
 ## Ticket API 
 
-## Endpointit
+### Endpointit
 - api/tickets
 - api/tickets/{id}
 
@@ -238,7 +237,7 @@ SaleService on apuluokka, joka vastaa:
 
 ## Esimerkit 
 
-## POST
+#### POST
 ```java
 {
   "ticketTypeId": 1,
@@ -248,7 +247,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## GET
+#### GET
 ```java
 {
   "id": 1,
@@ -259,7 +258,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## PUT
+#### PUT
 ```java
 {
   "id": 1,
@@ -270,7 +269,7 @@ SaleService on apuluokka, joka vastaa:
 }
 ```
 
-## DELETE
+#### DELETE
 
 | DELETE | `/api/tickets/{id}` | Poistaa lipun |
 
