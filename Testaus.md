@@ -76,7 +76,6 @@ Nämä testit antavat selkeän kuvan siitä, miltä lippujen myyntiprosessi näy
 
 @Test
     public void testCreateTicketAndFindByCode() {
-        // Luo uuden lipun
         Ticket newTicket = new Ticket(null, testTicketTypeId, "TEST123", false, null);
         
         HttpEntity<Ticket> request = new HttpEntity<>(newTicket);
@@ -88,8 +87,7 @@ Nämä testit antavat selkeän kuvan siitä, miltä lippujen myyntiprosessi näy
         assertThat(createResponse.getBody()).isNotNull();
         assertThat(createResponse.getBody().getCode()).isEqualTo("TEST123");
         assertThat(createResponse.getBody().getUsed()).isNull();
-        
-        // Hakee lipun koodin perusteella
+
         ResponseEntity<Ticket> getResponse = restTemplate
             .withBasicAuth("user", "password")
             .getForEntity(getBaseUrl() + "?code=TEST123", Ticket.class);
