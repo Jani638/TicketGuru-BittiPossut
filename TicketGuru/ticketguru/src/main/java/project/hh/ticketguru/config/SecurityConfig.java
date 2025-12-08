@@ -1,5 +1,6 @@
 package project.hh.ticketguru.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,6 +50,8 @@ public class SecurityConfig {
                 .ignoringRequestMatchers(toH2Console())
                 .ignoringRequestMatchers("/api/**")
                 .disable())
+            .httpBasic(httpBasic -> httpBasic.disable())
+            .formLogin(formLogin -> formLogin.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests((authz) -> authz
                 .requestMatchers(toH2Console()).permitAll()
@@ -56,6 +59,12 @@ public class SecurityConfig {
                 .requestMatchers("/api/events/**").permitAll()
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll())
+            .exceptionHandling(exceptions -> exceptions
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\":\"Unauthorized\"}");
+                }))
             .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
             .addFilterBefore(new JwtAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
         return http.build();
