@@ -1,6 +1,7 @@
 package project.hh.ticketguru;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import project.hh.ticketguru.model.*;
 import project.hh.ticketguru.repository.*;
@@ -15,25 +16,36 @@ public class DataLoader implements CommandLineRunner {
     private final TicketRepository ticketRepository;
     private final UserRepository userRepository;
     private final SaleRepository saleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public DataLoader(EventRepository eventRepository,
                       TicketTypeRepository ticketTypeRepository,
                       TicketRepository ticketRepository,
                       UserRepository userRepository,
-                      SaleRepository saleRepository) {
+                      SaleRepository saleRepository,
+                      PasswordEncoder passwordEncoder) {
         this.eventRepository = eventRepository;
         this.ticketTypeRepository = ticketTypeRepository;
         this.ticketRepository = ticketRepository;
         this.userRepository = userRepository;
         this.saleRepository = saleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        // Luo admin-käyttäjä
+        User admin = new User(null, "admin", passwordEncoder.encode("admin"), "ADMIN");
+        userRepository.save(admin);
         
-        User seller1 = new User(null, "seller1", "password", "SELLER");
-        User seller2 = new User(null, "seller2", "password", "SELLER");
+        // Luo tavallinen käyttäjä
+        User user = new User(null, "user", passwordEncoder.encode("password"), "USER");
+        userRepository.save(user);
+        
+        // Luo myyjät
+        User seller1 = new User(null, "seller1", passwordEncoder.encode("password"), "SELLER");
+        User seller2 = new User(null, "seller2", passwordEncoder.encode("password"), "SELLER");
         userRepository.save(seller1);
         userRepository.save(seller2);
 
