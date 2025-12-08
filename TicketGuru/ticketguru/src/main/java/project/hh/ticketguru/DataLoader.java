@@ -1,6 +1,7 @@
 package project.hh.ticketguru;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import project.hh.ticketguru.model.*;
 import project.hh.ticketguru.repository.*;
@@ -15,27 +16,30 @@ public class DataLoader implements CommandLineRunner {
     private final TicketRepository ticketRepository;
     private final UserRepository userRepository;
     private final SaleRepository saleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public DataLoader(EventRepository eventRepository,
                       TicketTypeRepository ticketTypeRepository,
                       TicketRepository ticketRepository,
                       UserRepository userRepository,
-                      SaleRepository saleRepository) {
+                      SaleRepository saleRepository,
+                      PasswordEncoder passwordEncoder) {
         this.eventRepository = eventRepository;
         this.ticketTypeRepository = ticketTypeRepository;
         this.ticketRepository = ticketRepository;
         this.userRepository = userRepository;
         this.saleRepository = saleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
         
-        User seller1 = new User(null, "seller1", "password", "SELLER");
-        User seller2 = new User(null, "seller2", "password", "SELLER");
-        userRepository.save(seller1);
-        userRepository.save(seller2);
+        User user = new User(null, "User", passwordEncoder.encode("user"), "USER");
+        User admin = new User(null, "Admin", passwordEncoder.encode("admin"), "ADMIN");
+        userRepository.save(user);
+        userRepository.save(admin);
 
         
         Event event1 = new Event(null, "Rock-konsertti", LocalDateTime.of(2025,12,1,19,0), "Helsinki Arena", 5000);
@@ -62,14 +66,14 @@ public class DataLoader implements CommandLineRunner {
         
         Sale sale1 = new Sale();
         sale1.setTicketId(ticket1.getId());
-        sale1.setSellerId(seller1.getId());
+        sale1.setSellerId(user.getId());
         sale1.setSaleDate(LocalDateTime.now());
         sale1.setPrice(99.9);
         saleRepository.save(sale1);
 
         Sale sale2 = new Sale();
         sale2.setTicketId(ticket2.getId());
-        sale2.setSellerId(seller2.getId());
+        sale2.setSellerId(admin.getId());
         sale2.setSaleDate(LocalDateTime.now());
         sale2.setPrice(49.9);
         saleRepository.save(sale2);
