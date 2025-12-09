@@ -1,8 +1,10 @@
 # API - Dokumentaatio
 
-## Base URL: 
+## Julkaisu Rahti ja tietokanta PostgreSQL
 
-- http://localhost:8080/api
+### Base URL:
+
+- https://ticket-guru-bitti-possut-ticketguru-bittipossut.2.rahtiapp.fi/api
   
 ## Event API: 
 ### Endpointit
