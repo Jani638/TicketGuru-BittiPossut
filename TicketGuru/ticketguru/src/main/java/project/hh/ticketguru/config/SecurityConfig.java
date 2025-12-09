@@ -19,8 +19,6 @@ import project.hh.ticketguru.filter.JwtAuthenticationFilter;
 import project.hh.ticketguru.util.JwtUtil;
 import project.hh.ticketguru.service.UserService;
 
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -46,17 +44,14 @@ public class SecurityConfig {
         http
             .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf
-                .ignoringRequestMatchers(toH2Console())
                 .ignoringRequestMatchers("/api/**")
                 .disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests((authz) -> authz
-                .requestMatchers(toH2Console()).permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/events/**").permitAll()
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll())
-            .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
             .addFilterBefore(new JwtAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
