@@ -4,11 +4,11 @@ FROM maven:3.9.9-eclipse-temurin-17 AS builder
 WORKDIR /opt/app
 
 # Kopioi projektin metadata ja lataa riippuvuudet
-COPY TicketGuru/ticketguru/pom.xml ./pom.xml
+COPY pom.xml ./pom.xml
 RUN mvn -B dependency:go-offline
 
 # Kopioi lähdekoodi
-COPY TicketGuru/ticketguru/src ./src
+COPY src ./src
 
 # Buildaa projekti
 RUN mvn -B clean install -DskipTests

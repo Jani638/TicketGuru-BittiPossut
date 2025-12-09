@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketController {

@@ -34,7 +34,11 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        // Only load demo data if running in development mode
+        String profile = System.getenv("SPRING_PROFILES_ACTIVE");
+        if (profile != null && profile.contains("rahti")) {
+            return; // Skip demo data in production
+        }
         
         User user = new User(null, "User", passwordEncoder.encode("user"), "USER");
         User admin = new User(null, "Admin", passwordEncoder.encode("admin"), "ADMIN");

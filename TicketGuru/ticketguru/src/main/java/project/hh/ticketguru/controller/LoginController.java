@@ -14,7 +14,6 @@ import project.hh.ticketguru.util.JwtUtil;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8081", "http://localhost:5173"})
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;

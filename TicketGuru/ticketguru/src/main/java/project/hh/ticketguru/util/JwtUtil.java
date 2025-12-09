@@ -11,14 +11,23 @@ import javax.crypto.SecretKey;
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.secret:mySecretKeyThatIsAtLeast32CharactersLongForHS256}")
+    @Value("${jwt.secret:}")
     private String secret;
 
     @Value("${jwt.expiration:86400000}")
     private long expiration;
 
     private SecretKey getSigningKey() {
-        return Keys.hmacShaKeyFor(secret.getBytes());
+        // Ensure secret is properly set
+        if (secret == null || secret.isEmpty()) {
+            throw new IllegalStateException("JWT secret must be configured via jwt.secret property");
+        }
+        byte[] keyBytes = secret.getBytes();
+        // Ensure minimum 32 bytes for HS256
+        if (keyBytes.length < 32) {
+            throw new IllegalStateException("JWT secret must be at least 32 characters long");
+        }
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String generateToken(String username) {
