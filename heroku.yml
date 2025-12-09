@@ -1,0 +1,10 @@
+build:
+  languages:
+    - java
+  config:
+    MAVEN_CUSTOM_OPTS: "-DskipTests"
+  packages:
+    apt:
+      - default-jdk
+run:
+  web: java -Dserver.port=$PORT $JAVA_OPTS -jar TicketGuru/ticketguru/target/ticketguru-0.0.1-SNAPSHOT.jar
